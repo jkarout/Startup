@@ -70,6 +70,7 @@ I am going to use the required technologies in the following ways.
 - **Service** - Services will handle logic like processing the survey or fetching exercise data. Use a simple service to submit survey responses, or fetch exercise descriptions and images for a pre-defined list or database.
 - **DB/Login** - The database will stor user data like survey responses, and login functionality can personalize user experiences.
 - **WebSocket** - WebSocket can be used to add real-time interactivity, such as sending feedback or updating live data. For example, I would send a welcome message to the user after he submits his survey.
+- **External Service** - I will be using Pexels API the purpose of this is to dynamically fetch high-quality exercise images for the exercise information page.
 
 ## 🚀 AWS deliverable
 
