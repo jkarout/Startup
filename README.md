@@ -27,20 +27,27 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Welcome to FitInfo, a simple and user-friendluy website designed to help fitness enthusiats of all levels learn about key exercises like the bench press, squats, deadlifts, should press, and many more! Upon visiting the site, users are greeted with quick three-question survey to get to know the user, followed by an easy-to-navigate page where they acan select an exercise of interest. Each exercise has its own dedicated page with clear, concise information, tips, and visuals to guide the users in mastering proper form and understanding the benefits. FitInfo is your go-to resource for straightforward, accessible fitness knowledge. 
+FitInfo is a simple and user-friendly website designed to help fitness enthusiats of all levels learn about key exercises like the bench press, squats, deadlifts, shoulder press, and many more! Upon visiting the site, users are greeted with quick three-question survey to get to know the user, followed by an easy-to-navigate page where they can select an exercise of interest. Each exercise has its own dedicated page with clear, concise information, tips, and visuals to guide the users in mastering proper form and understanding the benefits. FitInfo is your go-to resource for straightforward, accessible fitness knowledge! 
 
 ### Design
 
 ![Design image](startup.png)
 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This is how the sequence would be when the user interacts with the program.
 
 ```mermaid
 sequenceDiagram
-    actor You
+    actor User
     actor Website
-    You->>Website: Replace this with your design
+    User->>Website: Visit the homepage
+    Website->>User: Display survey popup
+    User->>Website: Fill out and submit the survey
+    Website->>User: Display exercise selection page
+    User->>Website: Select an exercise (e.g., Bench Press)
+    Website->>User: Show exercise info page with details and pictures
+    User->>Website: Navigate back to exercise selection or exit
+
 ```
 
 ### Key features
