@@ -76,7 +76,7 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **Server deployed and accessible with custom domain name** - [My server link](https://us-east-1.console.aws.amazon.com/console/home?region=us-east-1#).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://fitinfo.click/).
 
 ## 🚀 HTML deliverable
 
