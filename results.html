@@ -14,5 +14,23 @@
     </ul>
     <p>Additionally, we include visuals and diagrams showing proper technique and targeted muscles.</p>
     <p>Please select the exercise you are interested in learning about from the dropdown menu below:</p>
+    <label for="exercise">Choose an exercise:</label>
+    <select id="exercise" name="exercise" onchange="navigateToExercisePage(this.value)">
+        <option value="">-- Select an exercise --</option>
+        <option value="squat.html">Squat</option>
+        <option value="bench-press.html">Bench Press</option>
+        <option value="deadlift.html">Deadlift</option>
+        <option value="pull-up.html">Pull-up</option>
+        <option value="plank.html">Plank</option>
+    </select>
+
+    <!-- This is using javascript. It is for later, it helps to navigate to pages of the selected exercise immediately-->
+    <script>
+        function navigateToExercisePage(value) {
+            if (value) {
+                window.location.href = value; // Redirects to the selected exercise page
+            }
+        }
+    </script>
 
 </html>
