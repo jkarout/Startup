@@ -15,3 +15,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ## HTML Notes
 
 Make sure that on the last page every exercise link to a another webpage
+Also include visual in each of these webpages
+For the bench press html file. Change to ChestPresses.html in that way we could include both the incline and flat bench.
+include dumbell bicep curls
+include skull crushers 
+include barbell rows
