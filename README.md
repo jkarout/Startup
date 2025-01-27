@@ -90,7 +90,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Images** - I included images and videos to help the user understand how the exercise should be done. I also added some visuals to  help the user understand the muslces targeted in the exercises.
 - [x] **Login placeholder** - I included a login and username where it will make the user login it also has create and login buttons.
 - [x] **DB data placeholder** - After the user answers the questions on the surver, his questions will be updated in the table that is now as placeholders but then will change in the future.
-- [x] **WebSocket placeholder** - I had as my websocket placeholder a live notifications pop-up message, where it will give the new user a notifaction about if a user completed the survey.
+- [x] **WebSocket placeholder** - I have as my websocket placeholder a live notifications pop-up message, where it will give the new user a notifaction if a user completed the survey.
 ## 🚀 CSS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
