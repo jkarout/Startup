@@ -82,16 +82,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
-
+- [x] **HTML pages** - I completed this part of the deliverable by having multiple HTML pages such as index.html, survey.html, and results.html and within results.html the user will be be able to navigate to other pages to get information about the exercises. index.html will take care of logging in.
+- [x] **Proper HTML element usage** - I did use multiple elements to divide the page up into different parts and for organization. To help structure the pages more I included headers, footers, body, navigation, button, and more.
+- [x] **Links** - On each HTML page, the user will have a way to navigate to the other pages such as to return to the home page, to the survey page, and to the exercise selection page.
+- [x] **Text** - I included a lot of text that would help the user know the information about the website and I included some information about the website itself.
+- [x] **3rd party API placeholder** - In the home page of the website there will be a motivational quote generator. that would update everyday. Now, I have a placeholder that has a random quote in there, but that later would change everyday.
+- [x] **Images** - I included images and videos to help the user understand how the exercise should be done. I also added some visuals to  help the user understand the muslces targeted in the exercises.
+- [x] **Login placeholder** - I included a login and username where it will make the user login it also has create and login buttons.
+- [x] **DB data placeholder** - After the user answers the questions on the surver, his questions will be updated in the table that is now as placeholders but then will change in the future.
+- [x] **WebSocket placeholder** - I had as my websocket placeholder a live notifications pop-up message, where it will give the new user a notifaction about if a user completed the survey.
 ## 🚀 CSS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
