@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html>
+<head>
     <title>Exercise Information</title>
+
+    <!-- This is using javascript. It is for later, it helps to navigate to pages of the selected exercise immediately-->
+    <script>
+        function navigateToExercisePage(value) {
+            if (value) {
+                window.location.href = value; // Redirects to the selected exercise page
+            }
+        }
+    </script>
 </head>
 <body>
     <main>
+        <header>
         <ul>
             <nav>
             <li><a href="index.html">Home</a></li>
@@ -11,6 +22,7 @@
             <li><a href="results.html">Exercise Selection</a></li> 
             </nav>
         </ul>
+        </header>
             <img src="https://www.thebxngclub.com/wp-content/uploads/2023/05/3Y3A1828.jpg" width="400"> 
         <h1>Select the Exercise You Want to Learn About!</h1>
         <hr>
@@ -34,21 +46,12 @@
         </select>
         <hr>
     </main>
+
     <footer>
         <p><strong>By: Jarir Karout</strong></p>
         <a href="https://github.com/jkarout/Startup">Github</a>
         <p><a href="index.html">Return to Home</a></p></footer> 
     </footer>
 </body>
-
-
-    <!-- This is using javascript. It is for later, it helps to navigate to pages of the selected exercise immediately-->
-    <script>
-        function navigateToExercisePage(value) {
-            if (value) {
-                window.location.href = value; // Redirects to the selected exercise page
-            }
-        }
-    </script>
 
 </html>
