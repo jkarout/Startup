@@ -15,8 +15,6 @@
         background-color: #1a1e2b;
         color: white;
         font-family: "Arial", sans-serif;
-        margin: 0;
-        padding: 0;
       }
 
       h1 {
@@ -48,17 +46,16 @@
       }
 
       nav li {
-        list-style: none;
+        list-style: none; /* removes bullets */
       }
 
       nav a {
         font-family: "Oswald", sans-serif;
         text-transform: uppercase;
-        text-decoration: none;
+        text-decoration: none; /* Removes underline */
         font-weight: bold;
         color: cyan;
         padding: 10px 15px;
-        transition: all 0.3s ease-in-out;
         border-radius: 5px;
         display: block;
       }
@@ -74,7 +71,7 @@
         max-width: 100%; /* Ensures the image resizes */
         height: auto; /* Maintains aspect ratio */
         border-radius: 10px;
-        transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* Adds smooth transition when hovering over the image*/
       }
 
       img:hover {
@@ -98,7 +95,6 @@
         box-shadow: 0 0 10px cyan;
       }
 
-      /* Footer Styling */
       footer {
         margin-top: 20px;
         padding: 20px;
@@ -106,34 +102,6 @@
         border-radius: 10px;
         max-width: 90%;
         margin: auto;
-      }
-
-      .footer-nav {
-        display: flex;
-        justify-content: center; /* Centers the links */
-        gap: 30px; /* Spacing between links */
-        padding: 10px;
-      }
-
-      .footer-nav li {
-        list-style: none;
-        display: inline;
-      }
-
-      .footer-nav a {
-        font-family: "Oswald", sans-serif;
-        text-transform: uppercase;
-        text-decoration: none;
-        font-weight: bold;
-        color: cyan;
-        padding: 10px 15px;
-        transition: all 0.3s ease-in-out;
-        border-radius: 5px;
-      }
-
-      .footer-nav a:hover {
-        background-color: darkcyan;
-        color: white;
       }
 
       a {

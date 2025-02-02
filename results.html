@@ -1,206 +1,191 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Exercise Information</title>
 
     <!-- This is using javascript. It is for later, it helps to navigate to pages of the selected exercise immediately-->
     <script>
-        function navigateToExercisePage(value) {
-            if (value) {
-                window.location.href = value; // Redirects to the selected exercise page
-            }
+      function navigateToExercisePage(value) {
+        if (value) {
+          window.location.href = value; // Redirects to the selected exercise page
         }
+      }
     </script>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Orbitron:wght@500&family=Lora:wght@500&display=swap"
-rel="stylesheet"
-/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Orbitron:wght@500&family=Lora:wght@500&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-h1 {
-  font-family: "Oswald", sans-serif;
-  font-size: 2.2em;
-  font-weight: bold;
-  letter-spacing: 1.5px;
-  text-align: center;
-  text-transform: uppercase;
-}
+    <style>
+      h1 {
+        font-family: "Oswald", sans-serif;
+        font-size: 2.2em;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        text-align: center;
+        text-transform: uppercase;
+      }
 
-h2,
-h3 {
-  font-family: "Lora", serif;
-  font-size: 1.7em;
-  font-weight: 600;
-}
+      h2,
+      h3 {
+        font-family: "Lora", serif;
+        font-size: 1.7em;
+        font-weight: 600;
+      }
 
-body {
-  background-color: #1a1e2b;
-  color: white;
-  font-family: "Arial", serif;
-}
+      body {
+        background-color: #1a1e2b;
+        color: white;
+        font-family: "Arial", serif;
+      }
 
-section {
-  background-color: #2a2e3d;
-  padding: 20px;
-  margin: 30px;
-  border-radius: 10px;
-}
+      section {
+        background-color: #2a2e3d;
+        padding: 20px;
+        margin: 30px;
+        border-radius: 10px;
+      }
 
-nav {
-  display: flex;
-  justify-content: center; /* Centers links horizontally */
-  gap: 30px; /* Adds space between links */
-  background-color: #2a2e3d; /* Background color for better visibility */
-  padding: 10px;
-  margin : 20px;
-  border-radius: 10px; /* Rounded corners */
-}
+      nav {
+        display: flex;
+        justify-content: center; /* Centers links horizontally */
+        gap: 30px; /* Adds space between links */
+        background-color: #2a2e3d; /* Background color for better visibility */
+        padding: 10px;
+        margin: 20px;
+        border-radius: 10px; /* Rounded corners */
+      }
 
-nav li {
-  list-style: none;
-  display: inline;
-}
+      nav li {
+        list-style: none;
+        display: inline;
+      }
 
-nav a {
-  font-family: "Oswald", sans-serif;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-weight: bold;
-  color: cyan;
-  padding: 10px 15px;
-  transition: all 0.3s ease-in-out;
-  border-radius: 5px;
-}
+      nav a {
+        font-family: "Oswald", sans-serif;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: bold;
+        color: cyan;
+        padding: 10px 15px;
+        transition: all 0.3s ease-in-out;
+        border-radius: 5px;
+      }
 
-nav a:hover {
-  background-color: darkcyan;
-  color: white;
-}
-footer {
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #2a2e3d;
-  border-radius: 10px;
-}
+      nav a:hover {
+        background-color: darkcyan;
+        color: white;
+      }
+      footer {
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #2a2e3d;
+        border-radius: 10px;
+      }
 
-.footer-nav {
-  display: flex;
-  justify-content: center; /* Centers the links */
-  gap: 30px; /* Spacing between links */
-  padding: 10px;
-}
+      a {
+        color: darkcyan;
+      }
+      a:hover {
+        color: cyan;
+      }
 
-.footer-nav li {
-  list-style: none;
-  display: inline;
-}
+      select {
+        font-family: "Oswald", sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #2a2e3d; /* Dark background */
+        color: cyan; /* Text color */
+        border: 2px solid cyan; /* Border color */
+        padding: 10px;
+        border-radius: 5px;
+        appearance: none; /* Removes default arrow */
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        width: 170px; /* Adjust dropdown width */
+        text-align: center;
+      }
 
-.footer-nav a {
-  font-family: "Oswald", sans-serif;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-weight: bold;
-  color: cyan;
-  padding: 10px 15px;
-  transition: all 0.3s ease-in-out;
-  border-radius: 5px;
-}
+      select:hover {
+        background-color: darkcyan;
+        color: white;
+      }
 
-.footer-nav a:hover {
-  background-color: darkcyan;
-  color: white;
-}
+      select option {
+        background-color: #1a1e2b; /* Dark dropdown options */
+        color: white;
+        font-size: 16px;
+      }
 
-a {
-  color: darkcyan;
-}
-a:hover {
-  color: cyan;
-}
+      img {
+        display: block;
+        margin: 10px auto;
+        border-radius: 10px;
+        transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+      }
 
-select {
-  font-family: "Oswald", sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: #2a2e3d; /* Dark background */
-  color: cyan; /* Text color */
-  border: 2px solid cyan; /* Border color */
-  padding: 10px;
-  border-radius: 5px;
-  appearance: none; /* Removes default arrow */
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  width: 170px; /* Adjust dropdown width */
-  text-align: center;
-}
-
-select:hover {
-  background-color: darkcyan;
-  color: white;
-}
-
-select option {
-  background-color: #1a1e2b; /* Dark dropdown options */
-  color: white;
-  font-size: 16px;
-}
-
-img {
-  display: block;
-  margin: 10px auto;
-  border-radius: 10px;
-  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-}
-
-img:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 10px white;
-}
-
-
-</style>
-</head>
-<body>
+      img:hover {
+        transform: scale(1.2);
+        box-shadow: 0 0 10px white;
+      }
+    </style>
+  </head>
+  <body>
     <main>
-        <header>
+      <header>
         <ul>
-            <nav>
+          <nav>
             <li><a href="index.html">Home</a></li>
             <li><a href="survey.html">Survey</a></li>
-            <li><a href="results.html">Exercise Selection</a></li> 
-            </nav>
+            <li><a href="results.html">Exercise Selection</a></li>
+          </nav>
         </ul>
-        </header>
-            <img src="https://www.thebxngclub.com/wp-content/uploads/2023/05/3Y3A1828.jpg" width="400"> 
-        <h1>Select the Exercise You Want to Learn About!</h1>
-        <hr>
-        <p>Everyone wants to learn about the basics of the most important muscle stimulating exercises.</p>
-        <p>Here we will provide helpful information such as:</p>
-        <ul>
-            <li>How effective the exercise is</li>
-            <li>How often you should do it</li>
-            <li>The effect on the body (nervous system or muscles)</li>
-            <li>The muscles the exercise targets</li>
-        </ul>
-        <p>Additionally, we include visuals and pictures showing proper technique and targeted muscles.</p>
-        <hr>
-        <p>Please select the exercise you are interested in learning about from the dropdown menu below:</p>
-        <label for="exercise">Choose an exercise:</label>
-        <select id="exercise" name="exercise" onchange="navigateToExercisePage(this.value)">
-            <option value="">-- Select an exercise --</option>
-            <option value="squat.html">Squats</option>
-            <option value="bench.html">Bench Press</option>
-            <option value="deadlift.html">Deadlift</option>
-        </select>
-        <hr>
+      </header>
+      <img
+        src="https://www.thebxngclub.com/wp-content/uploads/2023/05/3Y3A1828.jpg"
+        width="400"
+      />
+      <h1>Select the Exercise You Want to Learn About!</h1>
+      <hr />
+      <p>
+        Everyone wants to learn about the basics of the most important muscle
+        stimulating exercises.
+      </p>
+      <p>Here we will provide helpful information such as:</p>
+      <ul>
+        <li>How effective the exercise is</li>
+        <li>How often you should do it</li>
+        <li>The effect on the body (nervous system or muscles)</li>
+        <li>The muscles the exercise targets</li>
+      </ul>
+      <p>
+        Additionally, we include visuals and pictures showing proper technique
+        and targeted muscles.
+      </p>
+      <hr />
+      <p>
+        Please select the exercise you are interested in learning about from the
+        dropdown menu below:
+      </p>
+      <label for="exercise">Choose an exercise:</label>
+      <select
+        id="exercise"
+        name="exercise"
+        onchange="navigateToExercisePage(this.value)"
+      >
+        <option value="">-- Select an exercise --</option>
+        <option value="squat.html">Squats</option>
+        <option value="bench.html">Bench Press</option>
+        <option value="deadlift.html">Deadlift</option>
+      </select>
+      <hr />
     </main>
 
     <footer>
-        <p><strong>By: Jarir Karout</strong></p>
-        <a href="https://github.com/jkarout/Startup">Github</a>
-        <p><a href="index.html">Return to Home</a></p></footer> 
+      <p><strong>By: Jarir Karout</strong></p>
+      <a href="https://github.com/jkarout/Startup">Github</a>
+      <p><a href="index.html">Return to Home</a></p>
     </footer>
-</body>
-
+  </body>
 </html>
