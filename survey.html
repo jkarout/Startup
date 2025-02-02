@@ -1,19 +1,186 @@
 <!DOCTYPE html>
 <html>
-<head>
-</head>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Orbitron:wght@500&family=Lora:wght@500&display=swap"
+      rel="stylesheet"
+    />
 
+    <style>
+      h1 {
+        font-family: "Oswald", sans-serif;
+        font-size: 2.2em;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      h2,
+      h3 {
+        font-family: "Lora", serif;
+        font-size: 1.7em;
+        font-weight: 600;
+      }
+
+      body {
+        background-color: #1a1e2b;
+        color: white;
+        font-family: "Arial", serif;
+      }
+
+      section {
+        background-color: #2a2e3d;
+        padding: 20px;
+        margin: 30px;
+        border-radius: 10px;
+      }
+
+      table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        border: 2px solid cyan;
+      }
+
+      th,
+      td {
+        padding: 5px;
+        border: 1px solid cyan;
+        text-align: center;
+      }
+
+      th {
+        background-color: darkcyan;
+        color: white;
+      }
+
+      input,
+      select,
+      button {
+        font-size: 16px;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        border: 2px solid cyan;
+        background-color: #2a2e3d;
+        color: white;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center; /* Centers links horizontally */
+        gap: 30px; /* Adds space between links */
+        background-color: #2a2e3d; /* Background color for better visibility */
+        padding: 10px;
+        margin: 20px;
+        border-radius: 10px; /* Rounded corners */
+      }
+
+      nav li {
+        list-style: none;
+        display: inline;
+      }
+
+      nav a {
+        font-family: "Oswald", sans-serif;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: bold;
+        color: cyan;
+        padding: 10px 15px;
+        transition: all 0.3s ease-in-out;
+        border-radius: 5px;
+      }
+
+      nav a:hover {
+        background-color: darkcyan;
+        color: white;
+      }
+      footer {
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #2a2e3d;
+        border-radius: 10px;
+      }
+
+      .footer-nav {
+        display: flex;
+        justify-content: center; /* Centers the links */
+        gap: 30px; /* Spacing between links */
+        padding: 10px;
+      }
+
+      .footer-nav li {
+        list-style: none;
+        display: inline;
+      }
+
+      .footer-nav a {
+        font-family: "Oswald", sans-serif;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: bold;
+        color: cyan;
+        padding: 10px 15px;
+        transition: all 0.3s ease-in-out;
+        border-radius: 5px;
+      }
+
+      .footer-nav a:hover {
+        background-color: darkcyan;
+        color: white;
+      }
+
+      a {
+        color: darkcyan;
+      }
+      a:hover {
+        color: cyan;
+      }
+
+      button {
+        background-color: cyan;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        padding: 12px 20px;
+      }
+      .submit-container {
+        text-align: center; /* Centers button horizontally */
+        margin-top: 20px;
+      }
+
+      button:hover {
+        background-color: darkcyan;
+        color: white;
+      }
+
+      img {
+        display: block;
+        margin: 10px auto;
+        border-radius: 10px;
+        transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+      }
+
+      img:hover {
+        transform: scale(1.2);
+        box-shadow: 0 0 10px white;
+      }
+    </style>
+  </head>
 
   <body>
     <header>
-    <h1>Thank you for logging in!</h1>
-    <ul>
-      <nav>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="survey.html">Survey</a></li>
-        <li><a href="results.html">Exercise Selection</a></li>
-      </nav>
-    </ul>
+      <h1>Thank you for logging in!</h1>
+      <ul>
+        <nav>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="survey.html">Survey</a></li>
+          <li><a href="results.html">Exercise Selection</a></li>
+        </nav>
+      </ul>
     </header>
     <main>
       <img
@@ -29,7 +196,8 @@
           <em
             >Placeholder: This section will display real-time notifications
             using WebSocket technology, and will be later in top right
-            corner.</em>
+            corner.</em
+          >
         </p>
       </section>
       <hr />
@@ -126,9 +294,11 @@
           </tr>
         </table>
         <!-- Submit Button -->
-        <p>
+
+        <div class="submit-container">
           <button type="submit">Submit</button>
-        </p>
+        </div>
+
         <hr />
       </form>
       <section>
@@ -165,8 +335,9 @@
       </section>
       <hr />
     </main>
-    <p><strong>By: Jarir Karout</strong></p>
+
     <footer>
+      <p><strong>By: Jarir Karout</strong></p>
       <a href="https://github.com/jkarout/Startup">Github</a>
     </footer>
   </body>
