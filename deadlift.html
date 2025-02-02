@@ -8,133 +8,159 @@
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Orbitron:wght@500&family=Lora:wght@500&display=swap"
       rel="stylesheet"
     />
-
     <style>
+      body {
+        background-color: #1a1e2b;
+        color: white;
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        font-family: "Oswald", sans-serif;
+        font-size: 2em;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 20px 0;
+      }
+
+      section {
+        background-color: #2a2e3d;
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 10px;
+        max-width: 90%; /* Makes sure it fits within small screens */
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; /* Makes it responsive */
+        gap: 15px;
+        background-color: #2a2e3d;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      nav li {
+        list-style: none;
+      }
+
+      nav a {
+        font-family: "Oswald", sans-serif;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: bold;
+        color: cyan;
+        padding: 10px 15px;
+        transition: all 0.3s ease-in-out;
+        border-radius: 5px;
+        display: block;
+      }
+
+      nav a:hover {
+        background-color: darkcyan;
+        color: white;
+      }
+
+      img {
+        display: block;
+        margin: 10px auto;
+        max-width: 100%; /* Ensures the image resizes */
+        height: auto; /* Maintains aspect ratio */
+        border-radius: 10px;
+        transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+      }
+
+      img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px white;
+      }
+
+      iframe {
+        display: block;
+        margin: 20px auto;
+        width: 90%;
+        max-width: 600px;
+        height: auto;
+        aspect-ratio: 16/9; /* Ensures proper scaling */
+        border-radius: 10px;
+        transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+      }
+
+      iframe:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px cyan;
+      }
+
+      /* Footer Styling */
+      footer {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #2a2e3d;
+        border-radius: 10px;
+        max-width: 90%;
+        margin: auto;
+      }
+
+      .footer-nav {
+        display: flex;
+        justify-content: center; /* Centers the links */
+        gap: 30px; /* Spacing between links */
+        padding: 10px;
+      }
+
+      .footer-nav li {
+        list-style: none;
+        display: inline;
+      }
+
+      .footer-nav a {
+        font-family: "Oswald", sans-serif;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: bold;
+        color: cyan;
+        padding: 10px 15px;
+        transition: all 0.3s ease-in-out;
+        border-radius: 5px;
+      }
+
+      .footer-nav a:hover {
+        background-color: darkcyan;
+        color: white;
+      }
+
+      a {
+        color: darkcyan;
+      }
+      a:hover {
+        color: cyan;
+      }
+
+      @media screen and (max-width: 768px) {
         h1 {
-          font-family: "Oswald", sans-serif;
-          font-size: 2.2em;
-          font-weight: bold;
-          letter-spacing: 1.5px;
-          text-align: center;
-          text-transform: uppercase;
+          font-size: 1.8em; /* Reduce font size for small screens */
         }
-  
-        h2,
-        h3 {
-          font-family: "Lora", serif;
-          font-size: 1.7em;
-          font-weight: 600;
-        }
-  
-        body {
-          background-color: #1a1e2b;
-          color: white;
-          font-family: "Arial", serif;
-        }
-  
-        section {
-          background-color: #2a2e3d;
-          padding: 20px;
-          margin: 30px;
-          border-radius: 10px;
-        }
-  
+
         nav {
-          display: flex;
-          justify-content: center; /* Centers links horizontally */
-          gap: 30px; /* Adds space between links */
-          background-color: #2a2e3d; /* Background color for better visibility */
-          padding: 10px;
-          margin: 20px;
-          border-radius: 10px; /* Rounded corners */
+          flex-direction: column; /* Stack nav items on small screens */
+          text-align: center;
         }
-  
-        nav li {
-          list-style: none;
-          display: inline;
-        }
-  
+
         nav a {
-          font-family: "Oswald", sans-serif;
-          text-transform: uppercase;
-          text-decoration: none;
-          font-weight: bold;
-          color: cyan;
-          padding: 10px 15px;
-          transition: all 0.3s ease-in-out;
-          border-radius: 5px;
+          width: 100%; /* Make nav links take full width */
         }
-  
-        nav a:hover {
-          background-color: darkcyan;
-          color: white;
+
+        section {
+          max-width: 95%;
+          padding: 15px;
         }
-        footer {
-          margin-top: 40px;
-          padding: 20px;
-          background-color: #2a2e3d;
-          border-radius: 10px;
-        }
-  
-        .footer-nav {
-          display: flex;
-          justify-content: center; /* Centers the links */
-          gap: 30px; /* Spacing between links */
-          padding: 10px;
-        }
-  
-        .footer-nav li {
-          list-style: none;
-          display: inline;
-        }
-  
-        .footer-nav a {
-          font-family: "Oswald", sans-serif;
-          text-transform: uppercase;
-          text-decoration: none;
-          font-weight: bold;
-          color: cyan;
-          padding: 10px 15px;
-          transition: all 0.3s ease-in-out;
-          border-radius: 5px;
-        }
-  
-        .footer-nav a:hover {
-          background-color: darkcyan;
-          color: white;
-        }
-  
-        a {
-          color: darkcyan;
-        }
-        a:hover {
-          color: cyan;
-        }
-  
-        img {
-          display: block;
-          margin: 10px auto;
-          border-radius: 10px;
-          transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-        }
-  
-        img:hover {
-          transform: scale(1.2);
-          box-shadow: 0 0 10px white;
-        }
-  
-        iframe {
-          display: block;
-          margin: 20px auto;
-          border-radius: 10px;
-          transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-        }
-  
-        iframe:hover {
-          transform: scale(1.05);
-          box-shadow: 0 0 10px cyan;
-        }
-      </style>
+      }
+    </style>
   </head>
   <body>
     <header>
