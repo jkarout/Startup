@@ -95,7 +95,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **Header, footer, and main content body** - I completed this part of the deliverable, and I did structure the page in a way that it wraps the texts the things inlcuded in a header, footer, and main content body.
+- [x] **Header, footer, and main content body** - I completed this part of the deliverable, and I did structure the page in a way that it wraps the texts the things inlcuded in a header, footer, and main content body. Also the header, footer and main content body each of them is in a different block.
 - [x] **Navigation elements** - In every single page I include navigation elements that helps the user navigate between pages. I also styled the navigation elements.
 - [x] **Responsive to window resizing** - I made sure that every page is responsive to a different sized window such as using "max-width' to resizing the image and make it adaptable to the page size.
 - [x] **Application elements** - I did inlcude styling to every single aspect in the website such as images, texts, and vidos. I also centered the logging in in the middle.
