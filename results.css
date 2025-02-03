@@ -1,0 +1,111 @@
+h1 {
+    font-family: "Oswald", sans-serif;
+    font-size: 2.2em;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  h2,
+  h3 {
+    font-family: "Lora", serif;
+    font-size: 1.7em;
+    font-weight: 600;
+  }
+
+  body {
+    background-color: #1a1e2b;
+    color: white;
+    font-family: "Arial", serif;
+  }
+
+  section {
+    background-color: #2a2e3d;
+    padding: 20px;
+    margin: 30px;
+    border-radius: 10px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center; /* Centers links horizontally */
+    gap: 30px; /* Adds space between links */
+    background-color: #2a2e3d; /* Background color for better visibility */
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px; /* Rounded corners */
+  }
+
+  nav li {
+    list-style: none;
+    display: inline;
+  }
+
+  nav a {
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    color: cyan;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+  }
+
+  nav a:hover {
+    background-color: darkcyan;
+    color: white;
+  }
+  footer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #2a2e3d;
+    border-radius: 10px;
+  }
+
+  a {
+    color: darkcyan;
+  }
+  a:hover {
+    color: cyan;
+  }
+
+  select {
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #2a2e3d; /* Dark background */
+    color: cyan; /* Text color */
+    border: 2px solid cyan; /* Border color */
+    padding: 10px;
+    border-radius: 5px;
+    appearance: none; /* Removes default arrow */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 170px; /* Adjust dropdown width */
+    text-align: center;
+  }
+
+  select:hover {
+    background-color: darkcyan;
+    color: white;
+  }
+
+  select option {
+    background-color: #1a1e2b; /* Dark dropdown options */
+    color: white;
+    font-size: 16px;
+  }
+
+  img {
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  }
+
+  img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px white;
+  }
