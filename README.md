@@ -95,12 +95,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - I completed this part of the deliverable, and I did structure the page in a way that it wraps the texts the things inlcuded in a header, footer, and main content body.
+- [x] **Navigation elements** - In every single page I include navigation elements that helps the user navigate between pages. I also styled the navigation elements.
+- [x] **Responsive to window resizing** - I made sure that every page is responsive to a different sized window such as using "max-width' to resizing the image and make it adaptable to the page size.
+- [x] **Application elements** - I did inlcude styling to every single aspect in the website such as images, texts, and vidos. I also centered the logging in in the middle.
+- [x] **Application text content** - I did inlcude all the texts and the information about the website and changed the fonts and styled the some specific lines that are supposed to help the user navigate through different parts of the website. 
+- [x] **Application images** - I did include multiple images for visual representation. I also style the images and the videos so that when a peson hovers over it would have an animation effect.
 
 ## 🚀 React part 1: Routing deliverable
 
