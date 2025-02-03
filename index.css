@@ -1,6 +1,6 @@
 body {
     background: url("https://img.freepik.com/premium-photo/man-is-seen-dark-room-as-he-lifts-barbell-demonstrating-his-strength-determination-comedic-picturization-ordinary-citizen-trying-weightlifting-first-time-ai-generated_538213-40034.jpg")
-      no-repeat center center fixed; /* the "fixed" helps the background image to stay in place */
+      no-repeat top center fixed; /* the "fixed" helps the background image to stay in place */
     background-size: cover; /* this ensures it cover the whole screen*/
     color: white;
     font-family: Arial, sans-serif;
@@ -17,6 +17,7 @@ body {
   /* Navigation Styling */
   nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
     background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
@@ -96,3 +97,20 @@ body {
   footer a:hover {
     color: white;
   }
+
+  @media (max-width: 768px) {
+    body {
+        background-size: contain; /* Makes sure the whole image fits */
+        background-attachment: scroll; /* Allows better scrolling on mobile */
+    }
+
+    nav {
+        flex-direction: column; /* Stacks navigation links vertically */
+        align-items: center;
+    }
+
+    nav a {
+        width: 100%;
+        max-width: 200px; /* Prevents it from stretching too much */
+    }
+}
