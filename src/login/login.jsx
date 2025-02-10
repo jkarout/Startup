@@ -1,47 +1,50 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import "./index.css";
+import React from 'react';
+import './login.css'; // ✅ Ensure this import path is correct
 
-function Login() {
+export default function Login() {
   return (
-    <main>
-      <h1>Welcome to FitInfo</h1>
-      <form>
-        <input type="text" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button type="submit">Login</button>
-        <button type="submit">Create</button>
-      </form>
-    </main>
+    <div>
+      <main>
+        <h1><strong>Motivational Quote of the Day</strong></h1>
+        {/* Static quote (same as in HTML) */}
+        <p>"The only bad workout is the one that didn't happen" - Unknown</p>
+
+        <form method="get" action="survey.html">
+          <p>
+            In this website, we provide information about any weightlifting
+            exercise that you could think of!
+          </p>
+          <p>If you want help reaching your fitness goals, please login!</p>
+          <hr />
+
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="your@email.com"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="password"
+            />
+          </div>
+
+          <button type="submit">Login</button>
+          <button type="submit">Create</button>
+          <hr />
+        </form>
+      </main>
+    </div>
+      
   );
 }
-
-function App() {
-  return (
-    <Router>
-      <header>
-        <h1>FitInfo</h1>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/survey">Survey</Link>
-          <Link to="/results">Exercise Selection</Link>
-        </nav>
-      </header>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/survey" element={<div>Survey Page</div>} />
-        <Route path="/results" element={<div>Exercise Selection Page</div>} />
-      </Routes>
-      <footer>
-        <p>By: Jarir Karout</p>
-        <a href="https://github.com/jkarout/Startup">Github</a>
-      </footer>
-    </Router>
-  );
-}
-
-export default App;
-
-
 
 
