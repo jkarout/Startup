@@ -20,3 +20,9 @@ For the bench press html file. Change to ChestPresses.html in that way we could 
 include dumbell bicep curls
 include skull crushers 
 include barbell rows
+
+
+## React notes
+
+make sure that all files are organized and to create src and public
+
