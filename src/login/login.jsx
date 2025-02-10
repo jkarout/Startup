@@ -1,37 +1,47 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./login.css";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import "./index.css";
 
-export function Login() {
+function Login() {
   return (
-    <main className="container-fluid bg-secondary text-center">
-      <div>
-        <h1>Welcome to FitInfo</h1>
-        <form method="get" action="survey.html">
-          <div className="input-group mb-3">
-            <span className="input-group-text">@</span>
-            <input className="form-control" type="text" placeholder="your@email.com" />
-          </div>
-          <div className="input-group mb-3">
-            <span className="input-group-text">🔒</span>
-            <input className="form-control" type="password" placeholder="password" />
-          </div>
-          <button type="submit" className="btn btn-primary">Login</button>
-          <button type="submit" className="btn btn-secondary">Create</button>
-        </form>
-      </div>
+    <main>
+      <h1>Welcome to FitInfo</h1>
+      <form>
+        <input type="text" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button type="submit">Login</button>
+        <button type="submit">Create</button>
+      </form>
     </main>
   );
 }
 
-const App = () => {
+function App() {
   return (
     <Router>
+      <header>
+        <h1>FitInfo</h1>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/survey">Survey</Link>
+          <Link to="/results">Exercise Selection</Link>
+        </nav>
+      </header>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/survey" element={<div>Survey Page</div>} />
+        <Route path="/results" element={<div>Exercise Selection Page</div>} />
       </Routes>
+      <footer>
+        <p>By: Jarir Karout</p>
+        <a href="https://github.com/jkarout/Startup">Github</a>
+      </footer>
     </Router>
   );
-};
+}
 
 export default App;
+
+
+
+
