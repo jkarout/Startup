@@ -1,12 +1,16 @@
 
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './app.css';
 
 
 
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 
 import {Login} from './login/login';
+import {Results} from './results/results';
+import {Survey} from './survey/survey';
+import {Squat} from './squats/squats';
 
 export default function App() {
   return(
@@ -14,7 +18,7 @@ export default function App() {
     <div
     className = "body"> 
       <header>
-        <h1>FitInfo, the Ultimate Weightlifting Guide!</h1>
+      <h1>FitInfo, the Ultimate Weightlifting Guide!</h1>
         <hr />
         <nav>
           <ul> 
@@ -27,6 +31,9 @@ export default function App() {
 
      <Routes>
         <Route path='/' element={<Login />} exact />
+        <Route path='/survey' element={<Survey />} />
+        <Route path='/results' element={<Results />} />
+        <Route path='/squats' element={<Squat />} />
 
       </Routes> 
 

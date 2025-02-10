@@ -1,0 +1,93 @@
+/* Ensures full-page background color */
+.body {
+  background-color: #1a1e2b;
+  color: white;
+  font-family: "Arial", serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Keeps main content properly aligned */
+main {
+  max-width: 900px;  /* Adjust width */
+  margin: 0 auto;  /* Center the main content */
+  padding: 20px;
+  text-align: left;
+}
+
+/* Styles header navigation */
+nav {
+  background-color: #2a2e3d;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: cyan;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: white;
+}
+
+/* Adjusts title size */
+.titles1 {
+  font-family: "Oswald", sans-serif;
+  font-size: 2.2em;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Ensures dropdown menu aligns properly */
+select {
+  font-family: "Oswald", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #2a2e3d;
+  color: cyan;
+  border: 2px solid cyan;
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+}
+
+select:hover {
+  background-color: darkcyan;
+  color: white;
+}
+
+/* Makes image responsive */
+img {
+  display: block;
+  margin: 10px auto;
+  border-radius: 10px;
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px white;
+}
+
+/* Ensures spacing at bottom */
+footer {
+  text-align: center;
+  margin-top: 30px;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './login.css'; // ✅ Ensure this import path is correct
+import './login.module.css'; // ✅ Ensure this import path is correct
 
 export function Login() {
   return (
@@ -7,6 +7,7 @@ export function Login() {
 
       <main>
         <h1 className='titles'>
+          
         <strong>Motivational Quote of the Day</strong></h1>
         {/* Static quote (same as in HTML) */}
         <p>"The only bad workout is the one that didn't happen" - Unknown</p>
