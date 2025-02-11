@@ -1,18 +1,17 @@
 import React from 'react';
-import './login.module.css'; // ✅ Ensure this import path is correct
-
+import './login.module.css'; 
 export function Login() {
   return (
     <div>
 
       <main>
-        <h1 className='titles'>
-          
-        <strong>Motivational Quote of the Day</strong></h1>
+        <p className="styling">
+          <strong>Motivational Quote of the Day</strong>
+        </p>
         {/* Static quote (same as in HTML) */}
         <p>"The only bad workout is the one that didn't happen" - Unknown</p>
 
-        <form method="get" action="survey.html">
+        <form method="get" action="/survey">
           <p>
             In this website, we provide information about any weightlifting
             exercise that you could think of!
@@ -41,7 +40,7 @@ export function Login() {
           </div>
 
           <button type="submit">Login</button>
-          <button type="submit">Create</button>
+  
           <hr />
         </form>
       </main>

@@ -1,7 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import React Router's navigation hook
 import styles from './results.module.css';
 
 export function Results() {
+  const navigate = useNavigate(); // Create a navigation function
+
+  const handleExerciseChange = (event) => {
+    const selectedExercise = event.target.value;
+    if (selectedExercise) {
+      navigate(selectedExercise); // Navigate to the React route
+    }
+  };
+
   return (
     <div className={styles.body}>
       <main>
@@ -29,16 +39,15 @@ export function Results() {
         <p>Please select the exercise you are interested in learning about from the dropdown menu below:</p>
 
         <label htmlFor="exercise">Choose an exercise:</label>
-        <select id="exercise" name="exercise" className={styles.select}>
+        <select id="exercise" name="exercise" className={styles.select} onChange={handleExerciseChange}>
           <option value="">-- Select an exercise --</option>
-          <option value="squat.html">Squats</option>
-          <option value="bench.html">Bench Press</option>
-          <option value="deadlift.html">Deadlift</option>
+          <option value="/squat">Squats</option>
+          <option value="/bench">Bench Press</option>
+          <option value="/deadlift">Deadlift</option>
         </select>
 
         <hr />
       </main>
-
     </div>
   );
 }

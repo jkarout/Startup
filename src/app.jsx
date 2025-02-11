@@ -11,6 +11,8 @@ import {Login} from './login/login';
 import {Results} from './results/results';
 import {Survey} from './survey/survey';
 import {Squat} from './squats/squats';
+import {Bench} from './bench/bench';
+import {Deadlift} from './deadlift/deadlift';
 
 export default function App() {
   return(
@@ -33,7 +35,9 @@ export default function App() {
         <Route path='/' element={<Login />} exact />
         <Route path='/survey' element={<Survey />} />
         <Route path='/results' element={<Results />} />
-        <Route path='/squats' element={<Squat />} />
+        <Route path='/squat' element={<Squat />} />
+        <Route path='/bench' element={<Bench />} />
+        <Route path='/deadlift' element={<Deadlift />} />
 
       </Routes> 
 
