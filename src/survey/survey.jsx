@@ -28,7 +28,7 @@ export function Survey() {
         <hr />
 
         <h1>Survey</h1>
-        <form method="get" action="results.html">
+        <form method="get" action="/results">
           <table border="1" cellSpacing="0" cellPadding="10">
             {/* Question 1 */}
             <tr>

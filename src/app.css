@@ -18,7 +18,7 @@
 
 
 nav {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(35, 33, 33, 0.6);
     padding: 10px;
     border-radius: 10px;
     text-align: center;
@@ -55,7 +55,7 @@ nav a:hover {
 
 
 form {
-    background-color: rgba(0,0,0,0.7);
+    background-color: #2a2e3d;
     padding: 20px;
     border-radius: 10px;
     display: inline-block;

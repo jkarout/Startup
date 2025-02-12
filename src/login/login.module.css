@@ -58,15 +58,6 @@ nav a:hover {
 }
 
 
-form {
-    background-color:rgba(42, 46, 61, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    display: inline-block;
-    text-align: left;
-    margin-top: 30px;
-}
-
 label, input {
     display: block;
     width: 100%;
