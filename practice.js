@@ -1,10 +1,25 @@
-function doMath(operation, a, b) {
-    return operation(a, b);
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+
+
+print() {
+    return 'My name is ' + this.name;
+    }
 }
 
+class Employee extends Person {
+    constructor(name, position) {
+        super(name);
+        this.position= position;
+    }
 
-function add(a , b) {
-    return a + b;
+    print() {
+        return super.print() + ' and I am a ' + this.position;
+    }
 }
 
-console.log(doMath(add, 5, 3)); 
+const e = new Employee('Eiche' , 'Software Engineer');
+console.log(e.print());
+
