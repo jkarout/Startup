@@ -12,6 +12,25 @@
     text-align: center;
 }
 
+/* Red Error Message - Enhanced Warning */
+.login-error-message {
+    margin-top: 10px;
+    color: #ff4c4c;  /* Brighter red for warning */
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;  /* Larger font size */
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;  
+    align-items: center;     
+    gap: 10px;                
+    margin-top: 20px;
+}
+
+
 /* HEADER */
 .styling {
     color: white;
