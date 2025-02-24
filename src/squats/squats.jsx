@@ -1,10 +1,11 @@
 import React from 'react';
+import { useSquatLogic } from './squatLogic'; 
 import styles from './squat.module.css'; 
 
 export function Squat() {
+  const { videoUrl, imageUrl } = useSquatLogic(); 
   return (
     <div className={styles.body}>
-      
       <main>
         <section>
           <h2>Introduction to Squats</h2>
@@ -55,7 +56,7 @@ export function Squat() {
           <iframe
             width="400"
             height="250"
-            src="https://www.youtube.com/embed/PPmvh7gBTi0"
+            src={videoUrl} // ✅ Use video URL from SquatLogic.js
             title="Proper Squat Technique Video"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -76,7 +77,7 @@ export function Squat() {
           </ul>
           <h3>Visual Representation:</h3>
           <img
-            src="https://cdn.shopify.com/s/files/1/1633/7705/files/what_muscles_do_squats_work_480x480.png?v=1630671679"
+            src={imageUrl} //image URL from SquatLogic.js
             alt="Muscles Targeted by Squats"
             width="300"
           />
