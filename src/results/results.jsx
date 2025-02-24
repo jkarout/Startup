@@ -1,17 +1,10 @@
+// src/results/Results.jsx
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import React Router's navigation hook
+import { useResultsLogic } from './resultsLogic'; 
 import styles from './results.module.css';
 
 export function Results() {
-  const navigate = useNavigate(); // Create a navigation function
-
-  const handleExerciseChange = (event) => {
-    const selectedExercise = event.target.value;
-    if (selectedExercise) {
-      navigate(selectedExercise); // Navigate to the React route
-    }
-  };
-
+  const { handleExerciseChange } = useResultsLogic(); 
   return (
     <div className={styles.body}>
       <main>
@@ -20,12 +13,11 @@ export function Results() {
           width="400"
           alt="Exercise"
         />
+        
         <h1 className={styles.titles1}>Select the Exercise You Want to Learn About!</h1>
         <hr />
 
-        <p>Everyone wants to learn about the basics of the most important muscle-stimulating exercises.</p>
         <p>Here we will provide helpful information such as:</p>
-
         <ul>
           <li>How effective the exercise is</li>
           <li>How often you should do it</li>
@@ -36,8 +28,7 @@ export function Results() {
         <p>Additionally, we include visuals and pictures showing proper technique and targeted muscles.</p>
         <hr />
 
-        <p>Please select the exercise you are interested in learning about from the dropdown menu below:</p>
-
+        
         <label htmlFor="exercise">Choose an exercise:</label>
         <select id="exercise" name="exercise" className={styles.select} onChange={handleExerciseChange}>
           <option value="">-- Select an exercise --</option>
