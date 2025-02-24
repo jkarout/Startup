@@ -1,10 +1,10 @@
-// src/results/Results.jsx
 import React from 'react';
 import { useResultsLogic } from './resultsLogic'; 
 import styles from './results.module.css';
 
 export function Results() {
   const { handleExerciseChange } = useResultsLogic(); 
+
   return (
     <div className={styles.body}>
       <main>
@@ -28,7 +28,7 @@ export function Results() {
         <p>Additionally, we include visuals and pictures showing proper technique and targeted muscles.</p>
         <hr />
 
-        
+        {/* ✅ Exercise Dropdown */}
         <label htmlFor="exercise">Choose an exercise:</label>
         <select id="exercise" name="exercise" className={styles.select} onChange={handleExerciseChange}>
           <option value="">-- Select an exercise --</option>
@@ -42,3 +42,4 @@ export function Results() {
     </div>
   );
 }
+
