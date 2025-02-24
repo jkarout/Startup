@@ -25,4 +25,5 @@ include barbell rows
 ## React notes
 
 make sure that all files are organized and to create src and public
+make sure all the javascript is finalized for all pages of the website
 
