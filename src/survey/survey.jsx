@@ -1,7 +1,12 @@
 import React from 'react';
-import styles from './survey.module.css'; // Ensure this CSS file is linked
+import { useNavigate } from 'react-router-dom'; 
+import { useSurveyForm } from './surveyLogic';
+import styles from './survey.module.css';
 
 export function Survey() {
+  const { formData, handleChange, handleSubmit, errorMessage, users } = useSurveyForm();
+  const navigate = useNavigate(); 
+
   return (
     <div className={styles.body}>
       <main>
@@ -10,16 +15,11 @@ export function Survey() {
           width="400"
           alt="Motivational Quote"
         />
-        
+
         <section id="notifications">
           <h2>Live Notifications</h2>
           <p id="websocket-message">
             "Another user has just completed their survey! Keep going!"
-          </p>
-          <p>
-            <em>
-              Placeholder: This section will display real-time notifications using WebSocket technology, and will be later in the top right corner.
-            </em>
           </p>
         </section>
 
@@ -28,19 +28,27 @@ export function Survey() {
         <hr />
 
         <h1>Survey</h1>
-        <form method="get" action="/results">
+
+        
+        <form onSubmit={handleSubmit}>
           <table border="1" cellSpacing="0" cellPadding="10">
-            {/* Question 1 */}
             <tr>
               <td>1. What is your name?</td>
-              <td><input type="text" name="username" placeholder="Name" /></td>
+              <td>
+                <input 
+                  type="text" 
+                  name="username" 
+                  placeholder="Name" 
+                  value={formData.username} 
+                  onChange={handleChange} 
+                />
+              </td>
             </tr>
 
-            {/* Question 2 */}
             <tr>
               <td>2. How often do you exercise?</td>
               <td>
-                <select name="ExerciseFrequency">
+                <select name="ExerciseFrequency" value={formData.ExerciseFrequency} onChange={handleChange}>
                   <option value="Default">Select an option</option>
                   <option value="Everyday">Everyday</option>
                   <option value="4-5 times a week">4-5 times a week</option>
@@ -51,11 +59,10 @@ export function Survey() {
               </td>
             </tr>
 
-            {/* Question 3 */}
             <tr>
               <td>3. How long have you been exercising/lifting for?</td>
               <td>
-                <select name="Howlong">
+                <select name="Howlong" value={formData.Howlong} onChange={handleChange}>
                   <option value="Default">Select an option</option>
                   <option value="1-2 years">1-2 years</option>
                   <option value="3-4 years">3-4 years</option>
@@ -68,11 +75,10 @@ export function Survey() {
               </td>
             </tr>
 
-            {/* Question 4 */}
             <tr>
               <td>4. What is your goal?</td>
               <td>
-                <select name="Goal">
+                <select name="Goal" value={formData.Goal} onChange={handleChange}>
                   <option value="Default">Select an option</option>
                   <option value="Lose weight">Lose weight</option>
                   <option value="Gain muscle">Gain muscle</option>
@@ -83,11 +89,10 @@ export function Survey() {
               </td>
             </tr>
 
-            {/* Question 5 */}
             <tr>
               <td>5. What is your favorite type of exercise?</td>
               <td>
-                <select name="FavoriteExercise">
+                <select name="FavoriteExercise" value={formData.FavoriteExercise} onChange={handleChange}>
                   <option value="Default">Select an option</option>
                   <option value="Cardio">Cardio</option>
                   <option value="Weightlifting">Weightlifting</option>
@@ -98,11 +103,10 @@ export function Survey() {
               </td>
             </tr>
 
-            {/* Question 6 */}
             <tr>
               <td>6. What is your favorite weightlifting exercise out of the big three?</td>
               <td>
-                <select name="FavoriteBigThree">
+                <select name="FavoriteBigThree" value={formData.FavoriteBigThree} onChange={handleChange}>
                   <option value="Default">Select an option</option>
                   <option value="Squat">Squat</option>
                   <option value="Bench Press">Bench Press</option>
@@ -113,41 +117,43 @@ export function Survey() {
             </tr>
           </table>
 
-          {/* Submit Button */}
           <div className={styles.submitContainer}>
             <button type="submit">Submit</button>
           </div>
+
+          {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>} 
+
           <hr />
         </form>
 
+        {/* Users Info Table (Dynamic) */}
         <section>
           <h2>Users Info</h2>
           <table border="1" cellSpacing="0" cellPadding="5">
-            <tr>
-              <th>User Name</th>
-              <th>Goal</th>
-              <th>Favorite Exercise</th>
-            </tr>
-            <tr>
-              <td>Jarir Karout</td>
-              <td>Build Muscle</td>
-              <td>Weightlifting</td>
-            </tr>
-            <tr>
-              <td>Alex Johnson</td>
-              <td>Lose Weight</td>
-              <td>Cardio</td>
-            </tr>
-            <tr>
-              <td>Sarah Lee</td>
-              <td>Improve Endurance</td>
-              <td>Crossfit</td>
-            </tr>
+            <thead>
+              <tr>
+                <th>User Name</th>
+                <th>Goal</th>
+                <th>Favorite Exercise</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user, index) => (
+                <tr key={index}>
+                  <td>{user.username}</td>
+                  <td>{user.Goal}</td>
+                  <td>{user.FavoriteExercise}</td>
+                </tr>
+              ))}
+            </tbody>
           </table>
-          <p>
-            <em>Placeholder: In the future, this table will be populated dynamically with data from the database.</em>
-          </p>
         </section>
+
+    
+        <div className={styles.submitContainer}>
+          <button type="button" onClick={() => navigate('/results')}>Go to Exercise Selection Page</button>
+        </div>
+
         <hr />
       </main>
     </div>
