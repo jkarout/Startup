@@ -1,10 +1,13 @@
+// src/bench/Bench.jsx
 import React from 'react';
-import styles from './bench.module.css'; // Ensure the CSS file is correctly linked
+import { useBenchLogic } from './benchLogic'; 
+import styles from './bench.module.css'; 
 
 export function Bench() {
+  const { videoUrl, imageUrl } = useBenchLogic(); // logic from benchLogic.js
+
   return (
     <div className={styles.body}>
-    
       <main>
         <section>
           <h2>Introduction to Bench Press</h2>
@@ -57,7 +60,7 @@ export function Bench() {
           <iframe
             width="400"
             height="250"
-            src="https://www.youtube.com/embed/hWbUlkb5Ms4"
+            src={videoUrl} // ✅ Use video URL from BenchLogic.js
             title="Proper Bench Press Technique Video"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -78,7 +81,7 @@ export function Bench() {
           </ul>
           <h3>Visual Representation:</h3>
           <img
-            src="https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2024/06/Muscles-worked-in-the-bench-press-exercise-2.jpg?resize=563%2C563&ssl=1"
+            src={imageUrl} //image URL from BenchLogic.js
             alt="Muscles Targeted by Bench Press"
             width="300"
           />
@@ -115,3 +118,4 @@ export function Bench() {
     </div>
   );
 }
+
