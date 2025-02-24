@@ -20,13 +20,13 @@
         padding: 20px;
         margin: 20px auto;
         border-radius: 10px;
-        max-width: 90%; /* Makes sure it fits within small screens */
+        max-width: 90%; 
       }
 
       nav {
         display: flex;
         justify-content: center;
-        flex-wrap: wrap; /* Makes it responsive */
+        flex-wrap: wrap; 
         gap: 15px;
         background-color: #2a2e3d;
         padding: 10px;
@@ -34,13 +34,13 @@
       }
 
       nav li {
-        list-style: none; /* removes bullets */
+        list-style: none; 
       }
 
       nav a {
         font-family: "Oswald", sans-serif;
         text-transform: uppercase;
-        text-decoration: none; /* Removes underline */
+        text-decoration: none; 
         font-weight: bold;
         color: cyan;
         padding: 10px 15px;
@@ -56,8 +56,8 @@
       img {
         display: block;
         margin: 10px auto;
-        max-width: 100%; /* Ensures the image resizes */
-        height: auto; /* Maintains aspect ratio */
+        max-width: 100%; 
+        height: auto; 
         border-radius: 10px;
         transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* Adds smooth transition when hovering over the image*/
       }
@@ -73,7 +73,7 @@
         width: 90%;
         max-width: 600px;
         height: auto;
-        aspect-ratio: 16/9; /* Ensures proper scaling */
+        aspect-ratio: 16/9; 
         border-radius: 10px;
         transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
       }
@@ -101,16 +101,16 @@
 
       @media screen and (max-width: 768px) {
         h1 {
-          font-size: 1.8em; /* Reduce font size for small screens */
+          font-size: 1.8em; 
         }
 
         nav {
-          flex-direction: column; /* Stack nav items on small screens */
+          flex-direction: column; 
           text-align: center;
         }
 
         nav a {
-          width: 100%; /* Make nav links take full width */
+          width: 100%;
         }
 
         section {
