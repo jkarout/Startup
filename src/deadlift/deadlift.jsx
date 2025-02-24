@@ -1,11 +1,12 @@
+// src/deadlift/Deadlift.jsx
 import React from 'react';
-import styles from './deadlift.module.css'; // Ensure the CSS file is correctly linked
+import { useDeadliftLogic } from './deadliftLogic'; 
+import styles from './deadlift.module.css'; 
 
 export function Deadlift() {
+  const { videoUrl, imageUrl } = useDeadliftLogic(); 
   return (
     <div className={styles.body}>
-    
-
       <main>
         <section>
           <h2>Introduction to Deadlifts</h2>
@@ -63,7 +64,7 @@ export function Deadlift() {
           <iframe
             width="400"
             height="250"
-            src="https://www.youtube.com/embed/ZaTM37cfiDs"
+            src={videoUrl} // ✅ Use video URL from DeadliftLogic.js
             title="Proper Deadlift Technique Video"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -86,7 +87,7 @@ export function Deadlift() {
           </ul>
           <h3>Visual Representation:</h3>
           <img
-            src="https://i0.wp.com/www.strengthlog.com/wp-content/uploads/2020/04/Deadlift-muscles-worked.png?resize=700%2C700&ssl=1"
+            src={imageUrl} //image URL from DeadliftLogic.js
             alt="Muscles Targeted by Deadlift"
             width="300"
           />
@@ -123,7 +124,7 @@ export function Deadlift() {
           </ul>
         </section>
       </main>
-
     </div>
   );
 }
+
