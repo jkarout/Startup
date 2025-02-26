@@ -106,16 +106,16 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I installed vite and bundled everything up using vite.
-- [ ] **Components** - I did use react components to be able to include all html and other files.
-- [ ] **Router** - I did router my files in a way that it would not use html files 
+- [x] **Bundled using Vite** - I installed vite and bundled everything up using vite.
+- [x] **Components** - I did use react components to be able to include all html and other files.
+- [x] **Router** - I did router my files in a way that it would not use html files 
 
 ## 🚀 React part 2: Reactivity
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - I added functions to make my website interactive.
+- [x] **Hooks** - I used react hooks to write my code and make my website interactive
 
 ## 🚀 Service deliverable
 
