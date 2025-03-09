@@ -28,3 +28,6 @@ make sure that all files are organized and to create src and public
 make sure all the javascript is finalized for all pages of the website
 
 use one of th three models for exposing endpoints: RPS, Rest, GraphQL
+use express
+ensure security
+ensure authorization
