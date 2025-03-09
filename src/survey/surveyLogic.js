@@ -1,8 +1,8 @@
-// src/survey/SurveyLogic.js
+
 import { useState } from 'react';
 
 export const useSurveyForm = () => {
-  // ✅ Form State
+  
   const [formData, setFormData] = useState({
     username: '',
     ExerciseFrequency: 'Default',
@@ -12,17 +12,17 @@ export const useSurveyForm = () => {
     FavoriteBigThree: 'Default'
   });
 
-  // ✅ Error Message State
+  
   const [errorMessage, setErrorMessage] = useState('');
 
-  // ✅ Users State (Initial Data)
+  
   const [users, setUsers] = useState([
     { username: 'Jarir Karout', Goal: 'Build Muscle', FavoriteExercise: 'Weightlifting' },
     { username: 'Alex Johnson', Goal: 'Lose Weight', FavoriteExercise: 'Cardio' },
     { username: 'Sarah Lee', Goal: 'Improve Endurance', FavoriteExercise: 'Crossfit' }
   ]);
 
-  // ✅ Handle Input Changes
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -31,7 +31,7 @@ export const useSurveyForm = () => {
     }));
   };
 
-  // ✅ Handle Form Submission
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -47,7 +47,7 @@ export const useSurveyForm = () => {
 
     setErrorMessage('');
 
-    // ✅ Add New User to Users Table
+    
     setUsers((prevUsers) => [
       ...prevUsers,
       {
@@ -57,7 +57,7 @@ export const useSurveyForm = () => {
       }
     ]);
 
-    // ✅ Clear Form Fields After Submission
+    
     setFormData({
       username: '',
       ExerciseFrequency: 'Default',
