@@ -31,19 +31,14 @@ export function Login() {
   
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent page refresh
-  
-    if (!email || !password) {
-      setMessage('Please enter both email and password.');
-      return;
-    }
-  
+    e.preventDefault();
+    
     try {
-      const response = await fetch('http://localhost:3000/api/auth/login', {
+      const response = await fetch('/api/auth/login', {
         method: 'POST',
-        credentials: 'include', // ✅ Ensure cookies are included
+        credentials: 'include', // ✅ Ensures cookies are sent
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password })
       });
   
       if (!response.ok) {
@@ -52,16 +47,18 @@ export function Login() {
       }
   
       const data = await response.json();
-      console.log('✅ User logged in:', data);
+      console.log('✅ Logged in:', data);
   
-      // Show success message and redirect to the survey page
-      setMessage(`Welcome, ${data.email}!`);
+      // ✅ Check if cookie was set in the response headers
+      console.log('🔍 Cookies:', document.cookie);
+  
       setTimeout(() => navigate('/survey'), 1000);
     } catch (error) {
-      console.error('❌ Error logging in:', error);
-      setMessage(error.message);
+      console.error('❌ Login failed:', error);
     }
   };
+  
+  
   
 
   return (

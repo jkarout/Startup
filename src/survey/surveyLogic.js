@@ -18,25 +18,25 @@ export const useSurveyForm = () => {
   useEffect(() => {
     const fetchSurveys = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/surveys', {
+        const response = await fetch('/api/surveys', {
           method: 'GET',
-          credentials: 'include',
+          credentials: 'include', // ✅ Ensures cookies are sent
           headers: { 'Content-Type': 'application/json' }
         });
-
+    
         if (!response.ok) {
           throw new Error('Failed to fetch surveys');
         }
-
+    
         const data = await response.json();
         console.log("Fetched survey data:", data); // Debugging
-
-        setUsers(data); // Store users in state
+        setUsers(data);
       } catch (error) {
         console.error('Error fetching surveys:', error);
         setErrorMessage('Could not load survey data.');
       }
     };
+    
 
     fetchSurveys();
   }, []);
@@ -52,18 +52,8 @@ export const useSurveyForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!formData.username || 
-        formData.ExerciseFrequency === 'Default' || 
-        formData.Howlong === 'Default' || 
-        formData.Goal === 'Default' || 
-        formData.FavoriteExercise === 'Default' || 
-        formData.FavoriteBigThree === 'Default') {
-      setErrorMessage('Please fill out all fields before submitting.');
-      return;
-    }
-  
     try {
-      const response = await fetch('http://localhost:3000/api/survey', {
+      const response = await fetch('/api/survey', {
         method: 'POST',
         credentials: 'include', // ✅ Sends authentication cookies
         headers: { 'Content-Type': 'application/json' },
@@ -77,7 +67,6 @@ export const useSurveyForm = () => {
   
       const data = await response.json();
       console.log('Survey saved:', data);
-  
       setUsers((prevUsers) => [...prevUsers, data.survey]);
   
       setFormData({
@@ -95,6 +84,7 @@ export const useSurveyForm = () => {
       setErrorMessage(error.message);
     }
   };
+  
   
 
   // 🔥 RETURN the necessary values so `Survey.jsx` can use them

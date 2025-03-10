@@ -27,11 +27,28 @@ export default function App() {
 
   // Check localStorage to see if the user is already logged in
   useEffect(() => {
-    const storedUser = localStorage.getItem('userName');
-    if (storedUser) {
-      setUserName(storedUser);
-    }
+    const checkAuth = async () => {
+      try {
+        const response = await fetch('/api/auth/status', {
+          method: 'GET',
+        });
+  
+        if (!response.ok) {
+          throw new Error('Not authenticated');
+        }
+  
+        const data = await response.json();
+        setUserName(data.email); // ✅ Set userName from backend response
+      } catch (error) {
+        console.error("❌ User not authenticated:", error);
+        setUserName(''); // Clear user state
+      }
+    };
+  
+    checkAuth();
   }, []);
+  ;
+  
 
   // Login handler
   const handleLogin = (name) => {
@@ -39,10 +56,43 @@ export default function App() {
   };
 
   // Logout handler
-  const handleLogout = () => {
-    setUserName('');
-    localStorage.removeItem('userName');
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', {
+        method: 'DELETE',
+        credentials: 'include', // ✅ Ensure cookies are included
+      });
+  
+      setUserName('');
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   };
+
+  useEffect(() => {
+    const fetchSurveys = async () => {
+      try {
+        const response = await fetch('/api/test', {
+          method: 'GET',
+        });
+    
+        if (!response.ok) {
+          throw new Error('Failed to fetch surveys');
+        }
+    
+        const data = await response.json();
+        console.log("Fetched survey data:", data); // Debugging
+        setUsers(data);
+      } catch (error) {
+        console.error('Error fetching surveys:', error);
+        setErrorMessage('Could not load survey data.');
+      }
+    };
+    
+
+    fetchSurveys();
+  }, []);
+  
 
   return (
     <Router> 

@@ -7,28 +7,69 @@ export function Unauthenticated({ onLogin }) {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const loginUser = () => {
+  const loginUser = async () => {
     if (!userName || !password) {
       setErrorMessage('Please enter both email and password.');
       return;
     }
-
-    localStorage.setItem('userName', userName); // Simulate login
-    onLogin(userName);
-    setErrorMessage('');
+  
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userName, password })
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.msg || 'Login failed');
+      }
+  
+      const data = await response.json();
+      onLogin(data.email); // Update authentication state
+      setErrorMessage('');
+    } catch (error) {
+      setErrorMessage(error.message || 'Login failed.');
+    }
   };
+  
+  
 
-  const createUser = () => {
+  const createUser = async () => {
     if (!userName || !password) {
       setErrorMessage('Please enter both email and password.');
       return;
     }
-
-    localStorage.setItem('userName', userName);
-    onLogin(userName);
-    setErrorMessage('');
+  
+    if (!/\S+@\S+\.\S+/.test(userName)) {  // ✅ Simple email validation
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
+  
+    try {
+      const response = await fetch('/api/auth/create', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userName, password })
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.msg || 'Account creation failed');
+      }
+  
+      const data = await response.json();
+      onLogin(data.email); // Update authentication state
+      setErrorMessage('');
+    } catch (error) {
+      setErrorMessage(error.message || 'Account creation failed.');
+    }
   };
-
+  
+  
+  
   return (
     <div className="login-container">
       <main>

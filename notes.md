@@ -31,3 +31,6 @@ use one of th three models for exposing endpoints: RPS, Rest, GraphQL
 use express
 ensure security
 ensure authorization
+
+ensure restriction
+we need to update 3rd party api with frontend

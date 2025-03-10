@@ -12,7 +12,7 @@ let users = [];
 let surveyResponses = [];
 
 // ✅ Force Port 3000
-const port = 3000;  
+const port = 4000;  
 
 // ✅ Middleware
 app.use(express.json());
@@ -20,11 +20,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 // ✅ Allow frontend requests and cookies
-app.use(cors({
-  origin: 'http://localhost:5173', // ✅ Allow frontend requests
-  credentials: true, // ✅ Allow cookies to be sent
-  allowedHeaders: ['Content-Type', 'Authorization'], // ✅ Allow specific headers
-}));
+
 
 // ✅ API Router
 const apiRouter = express.Router();
@@ -117,6 +113,10 @@ apiRouter.get('/surveys', verifyAuth, (_req, res) => {
   res.send(surveyResponses);
 });
 
+apiRouter.get('/test', (_req, res) => {
+  res.send({ msg: 'Test route is working!' });
+});
+
 /**
  * 🔧 UTILITY FUNCTIONS
  */
@@ -141,11 +141,14 @@ async function findUser(field, value) {
 // ✅ Set authentication cookie
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
-    secure: false, // ⚠️ Set to true in production
-    httpOnly: false,
-    sameSite: 'strict',
+    secure: process.env.NODE_ENV === 'production', // ✅ Secure in production
+    httpOnly: true,
+    sameSite: 'lax',
   });
+
+  console.log(`✅ Auth cookie set: ${authToken}`);
 }
+
 
 /**
  * 🛠 ERROR HANDLING
@@ -169,4 +172,16 @@ app.use((_req, res) => {
 app.listen(port, () => {
   console.log(`✅ Server running on port ${port}`);
 });
+
+apiRouter.get('/auth/status', async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+
+  if (user) {
+    res.send({ email: user.email });
+  } else {
+    res.status(401).send({ msg: 'Not authenticated' });
+  }
+});
+
+
 

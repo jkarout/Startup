@@ -32,89 +32,91 @@ export function Survey() {
         
         <form onSubmit={handleSubmit}>
           <table border="1" cellSpacing="0" cellPadding="10">
-            <tr>
-              <td>1. What is your name?</td>
-              <td>
-                <input 
-                  type="text" 
-                  name="username" 
-                  placeholder="Name" 
-                  value={formData.username} 
-                  onChange={handleChange} 
-                />
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>1. What is your name?</td>
+                <td>
+                  <input 
+                    type="text" 
+                    name="username" 
+                    placeholder="Name" 
+                    value={formData.username} 
+                    onChange={handleChange} 
+                  />
+                </td>
+              </tr>
 
-            <tr>
-              <td>2. How often do you exercise?</td>
-              <td>
-                <select name="ExerciseFrequency" value={formData.ExerciseFrequency} onChange={handleChange}>
-                  <option value="Default">Select an option</option>
-                  <option value="Everyday">Everyday</option>
-                  <option value="4-5 times a week">4-5 times a week</option>
-                  <option value="2-3 times a week">2-3 times a week</option>
-                  <option value="once a week">Once a week</option>
-                  <option value="never">This is my first time!</option>
-                </select>
-              </td>
-            </tr>
+              <tr>
+                <td>2. How often do you exercise?</td>
+                <td>
+                  <select name="ExerciseFrequency" value={formData.ExerciseFrequency} onChange={handleChange}>
+                    <option value="Default">Select an option</option>
+                    <option value="Everyday">Everyday</option>
+                    <option value="4-5 times a week">4-5 times a week</option>
+                    <option value="2-3 times a week">2-3 times a week</option>
+                    <option value="once a week">Once a week</option>
+                    <option value="never">This is my first time!</option>
+                  </select>
+                </td>
+              </tr>
 
-            <tr>
-              <td>3. How long have you been exercising/lifting for?</td>
-              <td>
-                <select name="Howlong" value={formData.Howlong} onChange={handleChange}>
-                  <option value="Default">Select an option</option>
-                  <option value="1-2 years">1-2 years</option>
-                  <option value="3-4 years">3-4 years</option>
-                  <option value="5-6 years">5-6 years</option>
-                  <option value="7-8 years">7-8 years</option>
-                  <option value="9-10 years">9-10 years</option>
-                  <option value="10+ years">10+ years</option>
-                  <option value="never">This is my first time!</option>
-                </select>
-              </td>
-            </tr>
+              <tr>
+                <td>3. How long have you been exercising/lifting for?</td>
+                <td>
+                  <select name="Howlong" value={formData.Howlong} onChange={handleChange}>
+                    <option value="Default">Select an option</option>
+                    <option value="1-2 years">1-2 years</option>
+                    <option value="3-4 years">3-4 years</option>
+                    <option value="5-6 years">5-6 years</option>
+                    <option value="7-8 years">7-8 years</option>
+                    <option value="9-10 years">9-10 years</option>
+                    <option value="10+ years">10+ years</option>
+                    <option value="never">This is my first time!</option>
+                  </select>
+                </td>
+              </tr>
 
-            <tr>
-              <td>4. What is your goal?</td>
-              <td>
-                <select name="Goal" value={formData.Goal} onChange={handleChange}>
-                  <option value="Default">Select an option</option>
-                  <option value="Lose weight">Lose weight</option>
-                  <option value="Gain muscle">Gain muscle</option>
-                  <option value="Maintain weight">Maintain weight</option>
-                  <option value="Improve endurance">Improve endurance</option>
-                  <option value="Improve strength">Improve strength</option>
-                </select>
-              </td>
-            </tr>
+              <tr>
+                <td>4. What is your goal?</td>
+                <td>
+                  <select name="Goal" value={formData.Goal} onChange={handleChange}>
+                    <option value="Default">Select an option</option>
+                    <option value="Lose weight">Lose weight</option>
+                    <option value="Gain muscle">Gain muscle</option>
+                    <option value="Maintain weight">Maintain weight</option>
+                    <option value="Improve endurance">Improve endurance</option>
+                    <option value="Improve strength">Improve strength</option>
+                  </select>
+                </td>
+              </tr>
 
-            <tr>
-              <td>5. What is your favorite type of exercise?</td>
-              <td>
-                <select name="FavoriteExercise" value={formData.FavoriteExercise} onChange={handleChange}>
-                  <option value="Default">Select an option</option>
-                  <option value="Cardio">Cardio</option>
-                  <option value="Weightlifting">Weightlifting</option>
-                  <option value="Yoga">Yoga</option>
-                  <option value="Pilates">Pilates</option>
-                  <option value="Crossfit">Crossfit</option>
-                </select>
-              </td>
-            </tr>
+              <tr>
+                <td>5. What is your favorite type of exercise?</td>
+                <td>
+                  <select name="FavoriteExercise" value={formData.FavoriteExercise} onChange={handleChange}>
+                    <option value="Default">Select an option</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Weightlifting">Weightlifting</option>
+                    <option value="Yoga">Yoga</option>
+                    <option value="Pilates">Pilates</option>
+                    <option value="Crossfit">Crossfit</option>
+                  </select>
+                </td>
+              </tr>
 
-            <tr>
-              <td>6. What is your favorite weightlifting exercise out of the big three?</td>
-              <td>
-                <select name="FavoriteBigThree" value={formData.FavoriteBigThree} onChange={handleChange}>
-                  <option value="Default">Select an option</option>
-                  <option value="Squat">Squat</option>
-                  <option value="Bench Press">Bench Press</option>
-                  <option value="Deadlift">Deadlift</option>
-                  <option value="I want to find out">I want to find out!</option>
-                </select>
-              </td>
-            </tr>
+              <tr>
+                <td>6. What is your favorite weightlifting exercise out of the big three?</td>
+                <td>
+                  <select name="FavoriteBigThree" value={formData.FavoriteBigThree} onChange={handleChange}>
+                    <option value="Default">Select an option</option>
+                    <option value="Squat">Squat</option>
+                    <option value="Bench Press">Bench Press</option>
+                    <option value="Deadlift">Deadlift</option>
+                    <option value="I want to find out">I want to find out!</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
           </table>
 
           <div className={styles.submitContainer}>
