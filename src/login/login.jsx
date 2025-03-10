@@ -1,5 +1,4 @@
-// src/login/login.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './login.module.css'; 
 import { useNavigate } from 'react-router-dom';
 
@@ -7,19 +6,63 @@ export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [quote, setQuote] = useState(''); // Store fetched quote
+  const [author, setAuthor] = useState(''); // Store quote author
   const navigate = useNavigate(); // Hook to navigate to other pages
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page refresh
+  // Fetch a motivational quote from a third-party API
+  useEffect(() => {
+    const fetchQuote = async () => {
+      try {
+        const response = await fetch('https://zenquotes.io/api/random');
+        const data = await response.json();
+        console.log("Fetched Quote:", data); // Debugging
+        setQuote(data[0].q);
+        setAuthor(data[0].a);
+      } catch (error) {
+        console.error('Error fetching quote:', error);
+        setQuote('The only bad workout is the one that didn’t happen.');
+        setAuthor('Unknown');
+      }
+    };
+  
+    fetchQuote();
+  }, []);
+  
 
-    // Allow login if both email and password are filled
-    if (email && password) {
-      setMessage(`Welcome, ${email}!`);
-      setTimeout(() => navigate('/survey'), 1000); // Redirect to survey after 1 second
-    } else {
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent page refresh
+  
+    if (!email || !password) {
       setMessage('Please enter both email and password.');
+      return;
+    }
+  
+    try {
+      const response = await fetch('http://localhost:3000/api/auth/login', {
+        method: 'POST',
+        credentials: 'include', // ✅ Ensure cookies are included
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.msg || 'Login failed');
+      }
+  
+      const data = await response.json();
+      console.log('✅ User logged in:', data);
+  
+      // Show success message and redirect to the survey page
+      setMessage(`Welcome, ${data.email}!`);
+      setTimeout(() => navigate('/survey'), 1000);
+    } catch (error) {
+      console.error('❌ Error logging in:', error);
+      setMessage(error.message);
     }
   };
+  
 
   return (
     <div>
@@ -27,7 +70,7 @@ export function Login() {
         <p className="styling">
           <strong>Motivational Quote of the Day</strong>
         </p>
-        <p>"The only bad workout is the one that didn't happen" - Unknown</p>
+        <p>"{quote}" - {author}</p>
 
         <form onSubmit={handleSubmit}>
           <p>

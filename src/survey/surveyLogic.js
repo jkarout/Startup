@@ -1,8 +1,7 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const useSurveyForm = () => {
-  
   const [formData, setFormData] = useState({
     username: '',
     ExerciseFrequency: 'Default',
@@ -12,17 +11,36 @@ export const useSurveyForm = () => {
     FavoriteBigThree: 'Default'
   });
 
-  
   const [errorMessage, setErrorMessage] = useState('');
+  const [users, setUsers] = useState([]);
 
-  
-  const [users, setUsers] = useState([
-    { username: 'Jarir Karout', Goal: 'Build Muscle', FavoriteExercise: 'Weightlifting' },
-    { username: 'Alex Johnson', Goal: 'Lose Weight', FavoriteExercise: 'Cardio' },
-    { username: 'Sarah Lee', Goal: 'Improve Endurance', FavoriteExercise: 'Crossfit' }
-  ]);
+  // 🔥 Fetch survey responses when the component loads
+  useEffect(() => {
+    const fetchSurveys = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/api/surveys', {
+          method: 'GET',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' }
+        });
 
-  
+        if (!response.ok) {
+          throw new Error('Failed to fetch surveys');
+        }
+
+        const data = await response.json();
+        console.log("Fetched survey data:", data); // Debugging
+
+        setUsers(data); // Store users in state
+      } catch (error) {
+        console.error('Error fetching surveys:', error);
+        setErrorMessage('Could not load survey data.');
+      }
+    };
+
+    fetchSurveys();
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -31,10 +49,9 @@ export const useSurveyForm = () => {
     }));
   };
 
- 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     if (!formData.username || 
         formData.ExerciseFrequency === 'Default' || 
         formData.Howlong === 'Default' || 
@@ -44,31 +61,42 @@ export const useSurveyForm = () => {
       setErrorMessage('Please fill out all fields before submitting.');
       return;
     }
-
-    setErrorMessage('');
-
-    
-    setUsers((prevUsers) => [
-      ...prevUsers,
-      {
-        username: formData.username,
-        Goal: formData.Goal,
-        FavoriteExercise: formData.FavoriteExercise
+  
+    try {
+      const response = await fetch('http://localhost:3000/api/survey', {
+        method: 'POST',
+        credentials: 'include', // ✅ Sends authentication cookies
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.msg || 'Failed to submit survey');
       }
-    ]);
-
-    
-    setFormData({
-      username: '',
-      ExerciseFrequency: 'Default',
-      Howlong: 'Default',
-      Goal: 'Default',
-      FavoriteExercise: 'Default',
-      FavoriteBigThree: 'Default'
-    });
-
-    alert('Form submitted successfully!');
+  
+      const data = await response.json();
+      console.log('Survey saved:', data);
+  
+      setUsers((prevUsers) => [...prevUsers, data.survey]);
+  
+      setFormData({
+        username: '',
+        ExerciseFrequency: 'Default',
+        Howlong: 'Default',
+        Goal: 'Default',
+        FavoriteExercise: 'Default',
+        FavoriteBigThree: 'Default'
+      });
+  
+      alert('Form submitted successfully!');
+    } catch (error) {
+      console.error('Error submitting survey:', error);
+      setErrorMessage(error.message);
+    }
   };
+  
 
+  // 🔥 RETURN the necessary values so `Survey.jsx` can use them
   return { formData, handleChange, handleSubmit, errorMessage, users };
 };
