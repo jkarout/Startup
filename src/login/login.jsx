@@ -12,7 +12,7 @@ export function Login() {
 
   // Fetch a motivational quote from a third-party API
   useEffect(() => {
-    const fetchQuote = async () => {
+    const fetchQuote = async () => { 
       try {
         const response = await fetch('https://zenquotes.io/api/random');
         const data = await response.json();
