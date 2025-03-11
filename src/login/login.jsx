@@ -6,29 +6,44 @@ export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [quote, setQuote] = useState(''); // Store fetched quote
-  const [author, setAuthor] = useState(''); // Store quote author
-  const navigate = useNavigate(); // Hook to navigate to other pages
+  const [quote, setQuote] = useState('');
+  const [author, setAuthor] = useState('');
+  const navigate = useNavigate();
 
   // Fetch a motivational quote from a third-party API
   useEffect(() => {
     const fetchQuote = async () => { 
       try {
-        const response = await fetch('https://zenquotes.io/api/random');
-        const data = await response.json();
-        console.log("Fetched Quote:", data); // Debugging
-        setQuote(data[0].q);
-        setAuthor(data[0].a);
+        let response = await fetch('https://zenquotes.io/api/random');
+        let data = await response.json();
+        
+        console.log("Fetched Quote Data:", data);
+        
+        if (Array.isArray(data) && data.length > 0 && data[0].q) {
+          setQuote(data[0].q);
+          setAuthor(data[0].a);
+        } else {
+          throw new Error('Invalid API response structure');
+        }
       } catch (error) {
         console.error('Error fetching quote:', error);
-        setQuote('The only bad workout is the one that didn’t happen.');
-        setAuthor('Unknown');
+        
+        // Fallback to alternative API if the first one fails
+        try {
+          let response = await fetch('https://api.quotable.io/random');
+          let data = await response.json();
+          setQuote(data.content);
+          setAuthor(data.author);
+        } catch (fallbackError) {
+          console.error('Error fetching fallback quote:', fallbackError);
+          setQuote('The only bad workout is the one that didn’t happen.');
+          setAuthor('Unknown');
+        }
       }
     };
-  
+    
     fetchQuote();
   }, []);
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +51,7 @@ export function Login() {
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
-        credentials: 'include', // ✅ Ensures cookies are sent
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
@@ -48,8 +63,6 @@ export function Login() {
   
       const data = await response.json();
       console.log('✅ Logged in:', data);
-  
-      // ✅ Check if cookie was set in the response headers
       console.log('🔍 Cookies:', document.cookie);
   
       setTimeout(() => navigate('/survey'), 1000);
@@ -57,9 +70,6 @@ export function Login() {
       console.error('❌ Login failed:', error);
     }
   };
-  
-  
-  
 
   return (
     <div>
@@ -85,7 +95,7 @@ export function Login() {
               name="email"
               placeholder="your@email.com"
               value={email}
-              onChange={(e) => setEmail(e.target.value)} // Update email state
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -97,16 +107,18 @@ export function Login() {
               name="password"
               placeholder="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)} // Update password state
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
           <button type="submit">Login</button>
 
           <hr />
-          {message && <p style={{ color: 'green' }}>{message}</p>} {/* Display success or error message */}
+          {message && <p style={{ color: 'green' }}>{message}</p>}
         </form>
       </main>
     </div>
   );
 }
+
+
