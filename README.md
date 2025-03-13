@@ -121,11 +121,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - I did include node.js and Express HTTP service in my website
+- [x] **Static middleware for frontend** - I completed a static middleware for the fronted of my website 
+- [x] **Calls to third party endpoints** - I did include bjcrypt.js and cookie-parser to call for 3rd party apis for my endpoints
+- [x] **Backend service endpoints** - I did implement that in my website that use the API routes 
+- [x] **Frontend calls service endpoints** - I used a 3rd party API for a random quote generator and it is implemented in my login page
 
 ## 🚀 DB/Login deliverable
 
