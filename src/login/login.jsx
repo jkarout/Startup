@@ -10,35 +10,35 @@ export function Login() {
   const [author, setAuthor] = useState('');
   const navigate = useNavigate();
 
+  // Local fallback quotes
+  const fallbackQuotes = [
+    { content: 'Success is not final, failure is not fatal: it is the courage to continue that counts.', author: 'Winston Churchill' },
+    { content: 'Do what you can, with what you have, where you are.', author: 'Theodore Roosevelt' },
+    { content: 'It always seems impossible until it’s done.', author: 'Nelson Mandela' },
+    { content: 'Believe you can and you’re halfway there.', author: 'Theodore Roosevelt' }
+  ];
+
   // Fetch a motivational quote from a third-party API
   useEffect(() => {
     const fetchQuote = async () => { 
       try {
-        let response = await fetch('https://zenquotes.io/api/random');
+        let response = await fetch('https://api.quotable.io/quotes?tags=motivational');
         let data = await response.json();
         
-        console.log("Fetched Quote Data:", data);
-        
-        if (Array.isArray(data) && data.length > 0 && data[0].q) {
-          setQuote(data[0].q);
-          setAuthor(data[0].a);
+        if (data.results && data.results.length > 0) {
+          const randomIndex = Math.floor(Math.random() * data.results.length);
+          setQuote(data.results[randomIndex].content);
+          setAuthor(data.results[randomIndex].author);
         } else {
           throw new Error('Invalid API response structure');
         }
       } catch (error) {
         console.error('Error fetching quote:', error);
         
-        // Fallback to alternative API if the first one fails
-        try {
-          let response = await fetch('https://api.quotable.io/random');
-          let data = await response.json();
-          setQuote(data.content);
-          setAuthor(data.author);
-        } catch (fallbackError) {
-          console.error('Error fetching fallback quote:', fallbackError);
-          setQuote('The only bad workout is the one that didn’t happen.');
-          setAuthor('Unknown');
-        }
+        // Select a random quote from the local fallback list
+        const randomFallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+        setQuote(randomFallback.content);
+        setAuthor(randomFallback.author);
       }
     };
     
@@ -77,7 +77,9 @@ export function Login() {
         <p className="styling">
           <strong>Motivational Quote of the Day</strong>
         </p>
-        <p>"{quote}" - {author}</p>
+        <p style={{ fontStyle: 'italic', fontSize: '1.2em' }}>
+          "{quote}" - {author}
+        </p>
 
         <form onSubmit={handleSubmit}>
           <p>
@@ -120,5 +122,3 @@ export function Login() {
     </div>
   );
 }
-
-
