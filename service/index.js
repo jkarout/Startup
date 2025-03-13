@@ -113,6 +113,7 @@ apiRouter.get('/surveys', verifyAuth, (_req, res) => {
   res.send(surveyResponses);
 });
 
+
 apiRouter.get('/test', (_req, res) => {
   res.send({ msg: 'Test route is working!' });
 });
@@ -141,7 +142,7 @@ async function findUser(field, value) {
 // ✅ Set authentication cookie
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
-    secure: process.env.NODE_ENV === 'production', // ✅ Secure in production
+    secure: process.env.NODE_ENV === 'production', //  Secure in production
     httpOnly: true,
     sameSite: 'lax',
   });
@@ -163,12 +164,13 @@ app.use((err, req, res, next) => {
 // ✅ Handle unknown routes properly
 app.use((_req, res) => {
   console.log("❌ Unknown route requested.");
-  res.status(404).json({ msg: "Not Found" });
-});
+  res.sendFile('index.html', { root : 'public'}) });
+
 
 /**
  * 🚀 START THE SERVER
  */
+app/
 app.listen(port, () => {
   console.log(`✅ Server running on port ${port}`);
 });

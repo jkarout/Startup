@@ -10,38 +10,25 @@ export function Unauthenticated({ onLogin }) {
   const [author, setAuthor] = useState('');
 
   // Local fallback quotes
-  const fallbackQuotes = [
-    { content: 'Success is not final, failure is not fatal: it is the courage to continue that counts.', author: 'Winston Churchill' },
-    { content: 'Do what you can, with what you have, where you are.', author: 'Theodore Roosevelt' },
-    { content: 'It always seems impossible until it’s done.', author: 'Nelson Mandela' },
-    { content: 'Believe you can and you’re halfway there.', author: 'Theodore Roosevelt' }
-  ];
 
   // Fetch a motivational quote
-  useEffect(() => {
-    const fetchQuote = async () => { 
-      try {
-        let response = await fetch('https://api.quotable.io/quotes?tags=motivational');
-        let data = await response.json();
-        
-        if (data.results && data.results.length > 0) {
-          const randomIndex = Math.floor(Math.random() * data.results.length);
-          setQuote(data.results[randomIndex].content);
-          setAuthor(data.results[randomIndex].author);
-        } else {
-          throw new Error('Invalid API response structure');
-        }
-      } catch (error) {
-        console.error('Error fetching quote:', error);
-        
-        // Select a random quote from the local fallback list
-        const randomFallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
-        setQuote(randomFallback.content);
-        setAuthor(randomFallback.author);
-      }
-    };
-    
-    fetchQuote();
+  React.useEffect(() => {
+    fetch('https://gomezmig03.github.io/MotivationalAPI/en.json', {
+        method: 'GET',
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log('Data:', data);
+            // Get a random index
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const randomElement = data[randomIndex];
+            setQuote(randomElement.phrase)
+            //setQuote(data.quote)
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            setQuote("Could not fetch quote")
+        });
   }, []);
 
   // Fixing the login function
