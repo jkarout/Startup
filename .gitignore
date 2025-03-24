@@ -1,5 +1,5 @@
 node_modules
 
 
-database/dbConfig.json
+service/database/dbConfig.json
 
