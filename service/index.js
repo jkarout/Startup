@@ -4,7 +4,8 @@ const cookieParser = require('cookie-parser');
 const uuid = require('uuid');
 const cors = require('cors');
 const { ObjectId } = require('mongodb');
-const { connectToMongo } = require('./database/mongo');
+const { connectToMongo } = require('./mongo');
+const config = require('./dbConfig.json');
 
 const app = express();
 const authCookieName = 'token';

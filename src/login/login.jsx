@@ -115,16 +115,6 @@ export function Login() {
           {message && <p style={{ color: 'green' }}>{message}</p>}
         </form>
       </main>
-
-      {/* ✅ GitHub Footer */}
-      <footer style={{ marginTop: '2rem', textAlign: 'center', fontSize: '0.9em', color: '#555' }}>
-        <hr />
-        <p>
-          <a href="https://github.com/jkarout/Startup" target="_blank" rel="noopener noreferrer">
-            View this project on GitHub
-          </a>
-        </p>
-      </footer>
     </div>
   );
 }
