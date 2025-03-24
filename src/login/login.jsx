@@ -10,7 +10,6 @@ export function Login() {
   const [author, setAuthor] = useState('');
   const navigate = useNavigate();
 
-  // Local fallback quotes
   const fallbackQuotes = [
     { content: 'Success is not final, failure is not fatal: it is the courage to continue that counts.', author: 'Winston Churchill' },
     { content: 'Do what you can, with what you have, where you are.', author: 'Theodore Roosevelt' },
@@ -18,7 +17,6 @@ export function Login() {
     { content: 'Believe you can and you’re halfway there.', author: 'Theodore Roosevelt' }
   ];
 
-  // Fetch a motivational quote from a third-party API
   useEffect(() => {
     const fetchQuote = async () => { 
       try {
@@ -34,8 +32,6 @@ export function Login() {
         }
       } catch (error) {
         console.error('Error fetching quote:', error);
-        
-        // Select a random quote from the local fallback list
         const randomFallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
         setQuote(randomFallback.content);
         setAuthor(randomFallback.author);
@@ -119,6 +115,16 @@ export function Login() {
           {message && <p style={{ color: 'green' }}>{message}</p>}
         </form>
       </main>
+
+      {/* ✅ GitHub Footer */}
+      <footer style={{ marginTop: '2rem', textAlign: 'center', fontSize: '0.9em', color: '#555' }}>
+        <hr />
+        <p>
+          <a href="https://github.com/jkarout/Startup" target="_blank" rel="noopener noreferrer">
+            View this project on GitHub
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 // src/App.jsx
-// src/App.jsx
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
@@ -16,10 +15,8 @@ import { Authenticated } from './login/Authenticated';
 import { Unauthenticated } from './login/Unauthenticated';
 
 export default function App() {
-  // State to track authentication
   const [userName, setUserName] = useState('');
 
-  // Check if the user is already authenticated
   useEffect(() => {
     const checkAuth = async () => {
       try {
@@ -30,27 +27,25 @@ export default function App() {
         }
 
         const data = await response.json();
-        setUserName(data.email); // ✅ Set userName from backend response
+        setUserName(data.email);
       } catch (error) {
         console.error("❌ User not authenticated:", error);
-        setUserName(''); // Clear user state
+        setUserName('');
       }
     };
 
     checkAuth();
   }, []);
 
-  // Logout handler
   const handleLogout = async () => {
     try {
       await fetch('/api/auth/logout', { method: 'DELETE', credentials: 'include' });
-      setUserName(''); // Clear user state
+      setUserName('');
     } catch (error) {
       console.error("Error logging out:", error);
     }
   };
 
-  // 🔹 Protected Route Wrapper
   const ProtectedRoute = ({ children }) => {
     return userName ? children : <Navigate to="/login" replace />;
   };
@@ -75,6 +70,17 @@ export default function App() {
         <Route path="/deadlift" element={<ProtectedRoute><Deadlift /></ProtectedRoute>} />
         <Route path="/" element={userName ? <Authenticated userName={userName} onLogout={handleLogout} /> : <Navigate to="/login" />} />
       </Routes>
+
+      {/* ✅ Global GitHub Footer */}
+      <footer style={{ marginTop: '2rem', textAlign: 'center', fontSize: '0.9em', color: '#555' }}>
+        <hr />
+        <p>
+          <a href="https://github.com/jkarout/Startup" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+        </p>
+      </footer>
     </Router>
   );
 }
+

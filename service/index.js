@@ -3,24 +3,21 @@ const bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const uuid = require('uuid');
 const cors = require('cors');
+const { ObjectId } = require('mongodb');
+const { connectToMongo } = require('./database/mongo');
 
 const app = express();
 const authCookieName = 'token';
-
-// Simulated databases (stored in memory)
-let users = [];
-let surveyResponses = [];
-
-// ✅ Force Port 3000
-const port = 4000;  
+const port = 4000;
 
 // ✅ Middleware
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static('public'));
-
-// ✅ Allow frontend requests and cookies
-
+app.use(cors({
+  origin: 'http://localhost:5173', // Update this if needed
+  credentials: true,
+}));
 
 // ✅ API Router
 const apiRouter = express.Router();
@@ -50,6 +47,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 
   if (user && await bcrypt.compare(password, user.password)) {
     user.token = uuid.v4();
+    await updateUserToken(user.email, user.token);
     setAuthCookie(res, user.token);
     console.log(`✅ User logged in: ${user.email}`);
     res.send({ email: user.email });
@@ -63,10 +61,21 @@ apiRouter.post('/auth/login', async (req, res) => {
 apiRouter.delete('/auth/logout', async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
-    delete user.token;
+    await updateUserToken(user.email, null);
   }
   res.clearCookie(authCookieName);
   res.status(204).end();
+});
+
+// ✅ Check login status
+apiRouter.get('/auth/status', async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+
+  if (user) {
+    res.send({ email: user.email });
+  } else {
+    res.status(401).send({ msg: 'Not authenticated' });
+  }
 });
 
 /**
@@ -91,7 +100,7 @@ const verifyAuth = async (req, res, next) => {
 };
 
 // ✅ Save a new survey response
-apiRouter.post('/survey', verifyAuth, (req, res) => {
+apiRouter.post('/survey', verifyAuth, async (req, res) => {
   console.log("📥 Received survey submission:", req.body);
 
   const { username, ExerciseFrequency, Howlong, Goal, FavoriteExercise, FavoriteBigThree } = req.body;
@@ -102,18 +111,42 @@ apiRouter.post('/survey', verifyAuth, (req, res) => {
   }
 
   const newSurvey = { username, ExerciseFrequency, Howlong, Goal, FavoriteExercise, FavoriteBigThree };
-  surveyResponses.push(newSurvey);
+  const db = await connectToMongo();
+  await db.collection('surveys').insertOne(newSurvey);
 
   console.log("✅ Survey saved:", newSurvey);
   res.send({ msg: 'Survey submitted successfully!', survey: newSurvey });
 });
 
 // ✅ Get all survey responses
-apiRouter.get('/surveys', verifyAuth, (_req, res) => {
-  res.send(surveyResponses);
+apiRouter.get('/surveys', verifyAuth, async (_req, res) => {
+  const db = await connectToMongo();
+  const surveys = await db.collection('surveys').find({}).toArray();
+  res.send(surveys);
 });
 
+// ✅ Update a survey response
+apiRouter.put('/survey/:id', verifyAuth, async (req, res) => {
+  const db = await connectToMongo();
+  const result = await db.collection('surveys').updateOne(
+    { _id: new ObjectId(req.params.id) },
+    { $set: req.body }
+  );
 
+  res.send({ updated: result.modifiedCount });
+});
+
+// ✅ Delete a survey response
+apiRouter.delete('/survey/:id', verifyAuth, async (req, res) => {
+  const db = await connectToMongo();
+  const result = await db.collection('surveys').deleteOne({
+    _id: new ObjectId(req.params.id),
+  });
+
+  res.send({ deleted: result.deletedCount });
+});
+
+// ✅ Test route
 apiRouter.get('/test', (_req, res) => {
   res.send({ msg: 'Test route is working!' });
 });
@@ -122,11 +155,15 @@ apiRouter.get('/test', (_req, res) => {
  * 🔧 UTILITY FUNCTIONS
  */
 
-// ✅ Create a new user
+// ✅ Create a new user in MongoDB
 async function createUser(email, password) {
+  const db = await connectToMongo();
+  const usersCollection = db.collection('users');
+
   const passwordHash = await bcrypt.hash(password, 10);
   const user = { email, password: passwordHash, token: uuid.v4() };
-  users.push(user);
+
+  await usersCollection.insertOne(user);
   console.log("👤 New user created:", user);
   return user;
 }
@@ -134,15 +171,28 @@ async function createUser(email, password) {
 // ✅ Find a user by a specific field
 async function findUser(field, value) {
   if (!value) return null;
-  const foundUser = users.find(u => u[field] === value);
+  const db = await connectToMongo();
+  const usersCollection = db.collection('users');
+
+  const query = {};
+  query[field] = value;
+  const foundUser = await usersCollection.findOne(query);
   console.log(`🔎 Finding user by ${field}: ${value}`, foundUser);
   return foundUser;
+}
+
+// ✅ Update user token (login/logout)
+async function updateUserToken(email, token) {
+  const db = await connectToMongo();
+  const usersCollection = db.collection('users');
+
+  await usersCollection.updateOne({ email }, { $set: { token } });
 }
 
 // ✅ Set authentication cookie
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
-    secure: process.env.NODE_ENV === 'production', //  Secure in production
+    secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     sameSite: 'lax',
   });
@@ -150,40 +200,23 @@ function setAuthCookie(res, authToken) {
   console.log(`✅ Auth cookie set: ${authToken}`);
 }
 
-
 /**
  * 🛠 ERROR HANDLING
  */
 
-// ✅ Error handler middleware
 app.use((err, req, res, next) => {
   console.error("🔥 Server error:", err);
   res.status(500).send({ type: err.name, message: err.message });
 });
 
-// ✅ Handle unknown routes properly
 app.use((_req, res) => {
   console.log("❌ Unknown route requested.");
-  res.sendFile('index.html', { root : 'public'}) });
-
+  res.sendFile('index.html', { root: 'public' });
+});
 
 /**
  * 🚀 START THE SERVER
  */
-app/
 app.listen(port, () => {
   console.log(`✅ Server running on port ${port}`);
 });
-
-apiRouter.get('/auth/status', async (req, res) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
-
-  if (user) {
-    res.send({ email: user.email });
-  } else {
-    res.status(401).send({ msg: 'Not authenticated' });
-  }
-});
-
-
-

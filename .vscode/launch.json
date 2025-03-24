@@ -10,7 +10,7 @@
             "name": "Launch Program",
             "skipFiles": ["<node_internals>/**"],
             "runtimeArgs": ["--watch"],
-            "program": "${workspaceFolder}/main.js"
+            "program": "${workspaceFolder}/database/database.js"
         }
     ]
 }
