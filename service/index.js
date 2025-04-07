@@ -218,6 +218,13 @@ app.use((_req, res) => {
 /**
  * 🚀 START THE SERVER
  */
-app.listen(port, () => {
-  console.log(`✅ Server running on port ${port}`);
+const http = require('http');
+const { peerProxy } = require('./peerProxy');
+
+const server = http.createServer(app);
+peerProxy(server); // 👈 Hook in your WebSocket logic
+
+server.listen(port, () => {
+  console.log(`✅ Server (HTTP + WebSocket) running on port ${port}`);
 });
+
