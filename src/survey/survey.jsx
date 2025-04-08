@@ -4,11 +4,31 @@ import { useSurveyForm } from './surveyLogic';
 import styles from './survey.module.css';
 
 export function Survey() {
-  const { formData, handleChange, handleSubmit, errorMessage, users } = useSurveyForm();
-  const navigate = useNavigate(); 
+  const { formData, handleChange, handleSubmit, errorMessage, users, notification } = useSurveyForm();
+  const navigate = useNavigate();
+
+  
 
   return (
     <div className={styles.body}>
+    {/* ✅ Floating notification box */}
+    {notification && (
+      <div style={{
+        position: 'fixed',
+        top: '20px',
+        left: '20px',
+        backgroundColor: '#e6ffe6',
+        color: '#333',
+        border: '1px solid #2ecc71',
+        padding: '12px 20px',
+        borderRadius: '8px',
+        boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+        zIndex: 1000,
+        fontWeight: 'bold',
+      }}>
+        {notification}
+      </div>
+    )}
       <main>
         <img
           src="https://res.cloudinary.com/teepublic/image/private/s--AXsn4sc_--/t_Resized%20Artwork/c_fit,g_north_west,h_954,w_954/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_auto,h_630,q_auto:good:420,w_630/v1675289574/production/designs/38944431_2.jpg"
@@ -16,12 +36,7 @@ export function Survey() {
           alt="Motivational Quote"
         />
 
-        <section id="notifications">
-          <h2>Live Notifications</h2>
-          <p id="websocket-message">
-            "Another user has just completed their survey! Keep going!"
-          </p>
-        </section>
+      
 
         <hr />
         <p>To reach your goals, please answer the following questions!</p>

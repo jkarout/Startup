@@ -41,6 +41,17 @@ export const useSurveyForm = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (notification) {
+      const timer = setTimeout(() => {
+        setNotification('');
+      }, 5000);
+  
+      return () => clearTimeout(timer);
+    }
+  }, [notification]);
+  
+
   // Fetch existing surveys
   useEffect(() => {
     const fetchSurveys = async () => {
