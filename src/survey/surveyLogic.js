@@ -19,7 +19,7 @@ export const useSurveyForm = () => {
   useEffect(() => {
     // Adjust the URL to match your deployment if needed
     const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    const socketUrl = `${protocol}://${window.location.hostname}:4000`;
+    const socketUrl = `${protocol}://${window.location.host}`;
     console.log('🔌 Connecting to WebSocket at:', socketUrl);
     socketRef.current = new WebSocket(socketUrl);
 

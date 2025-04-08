@@ -141,8 +141,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - I did complete this part of the deliverable. I tried adjusting it multiple times in a way that it would connect and listent to the backend
+- [x] **Frontend makes WebSocket connection** - I did complete this part of the deliverable as well so that the frontend would make the websocket connection.
+- [x] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
+- [x] **WebSocket data displayed** - I have a notification that would pop-up whenever the user would submit a survey..
+- [x] **Application is fully functional** - I did compelete this part of the deliverable so the websocket is fully functional and connecting. A notification would pop-up whenever the user completes a survey.
